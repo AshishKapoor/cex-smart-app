@@ -23,28 +23,28 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="264"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m6c-Xz-Jbe" id="iXW-jX-5Nh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="263.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ku-hH-BXg" customClass="LineChartView" customModule="Charts">
+                                            <rect key="frame" x="16" y="62" width="343" height="190"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="BTC/USD" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wEW-om-oTZ">
-                                            <rect key="frame" x="16" y="12" width="159" height="42"/>
+                                            <rect key="frame" x="108" y="8" width="159" height="42"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ku-hH-BXg" customClass="LineChartView" customModule="Charts">
-                                            <rect key="frame" x="16" y="62" width="343" height="190"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="6ku-hH-BXg" secondAttribute="bottom" constant="3.5" id="4lS-bu-Rfk"/>
-                                        <constraint firstItem="wEW-om-oTZ" firstAttribute="leading" secondItem="6ku-hH-BXg" secondAttribute="leading" id="DQJ-Zv-tAx"/>
-                                        <constraint firstItem="wEW-om-oTZ" firstAttribute="leading" secondItem="iXW-jX-5Nh" secondAttribute="leadingMargin" constant="8" id="PHU-Ip-ofU"/>
-                                        <constraint firstItem="6ku-hH-BXg" firstAttribute="centerX" secondItem="iXW-jX-5Nh" secondAttribute="centerX" id="j3Q-Ch-ItC"/>
-                                        <constraint firstItem="6ku-hH-BXg" firstAttribute="top" secondItem="wEW-om-oTZ" secondAttribute="bottom" constant="8" id="mrO-Au-a4V"/>
-                                        <constraint firstItem="wEW-om-oTZ" firstAttribute="top" secondItem="iXW-jX-5Nh" secondAttribute="topMargin" constant="4" id="zz1-pO-gKd"/>
+                                        <constraint firstItem="wEW-om-oTZ" firstAttribute="centerX" secondItem="6ku-hH-BXg" secondAttribute="centerX" id="0nD-iT-N6x"/>
+                                        <constraint firstItem="wEW-om-oTZ" firstAttribute="top" secondItem="iXW-jX-5Nh" secondAttribute="topMargin" id="Cxn-ts-vLh"/>
+                                        <constraint firstItem="6ku-hH-BXg" firstAttribute="top" secondItem="wEW-om-oTZ" secondAttribute="bottom" constant="12" id="I2m-U7-cCT"/>
+                                        <constraint firstItem="6ku-hH-BXg" firstAttribute="leading" secondItem="iXW-jX-5Nh" secondAttribute="leadingMargin" constant="8" id="URC-kE-BeD"/>
+                                        <constraint firstItem="wEW-om-oTZ" firstAttribute="centerX" secondItem="iXW-jX-5Nh" secondAttribute="centerX" id="ZGW-CZ-hea"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6ku-hH-BXg" secondAttribute="bottom" constant="3.5" id="ghD-eV-5II"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -58,7 +58,19 @@
                             <outlet property="delegate" destination="vtP-Cc-XJp" id="qPk-05-iCT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4aG-Vz-afI"/>
+                    <navigationItem key="navigationItem" id="4aG-Vz-afI">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="bcr-x9-oDL">
+                            <rect key="frame" x="81.5" y="7" width="212" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="24 Hours"/>
+                                <segment title="1 Week"/>
+                                <segment title="1 Month"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8Z-9g-1LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,7 +136,9 @@
                             <constraint firstItem="eD8-Ib-b8l" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="29" id="ynz-tG-b77"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KZf-Zz-hky"/>
+                    <navigationItem key="navigationItem" id="KZf-Zz-hky">
+                        <nil key="title"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,18 +16,20 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         lineChartView.delegate = self
-        self.setChart(dataPoints: ["1", "2", "3"], values: [12.0, 2.0, 3.2])
+        setupChartView()
+    }
+    
+    func setupChartView() -> Void {
+        lineChartView.backgroundColor      = UIColor.white
+        lineChartView.layer.borderWidth    = 0.25
+        lineChartView.layer.cornerRadius   = 5
+        lineChartView.layer.shadowColor    = UIColor.gray.cgColor
     }
     
     func addXValuesToBarChartView(time: [String]) {
         lineChartView.xAxis.labelCount = time.count
         lineChartView.xAxis.labelTextColor = UIColor.black
-        
-        lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter {
-            (value, axis) -> String in return ["23","45","100"][Int(value)]
-        }
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -38,9 +40,6 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
             let dataEntry = BarChartDataEntry(x: Double(points), yValues: [values[points]])
             dataEntries.append(dataEntry)
         }
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "BTC - USD conversion")
-        //        chartDataSet.colors = ChartColorTemplates.colorful()
-        chartDataSet.colors = [UIColor.barGraphChartColor()]
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "ETH - USD conversion")
 //        lineChartDataSet.colors = ChartColorTemplates.colorful()

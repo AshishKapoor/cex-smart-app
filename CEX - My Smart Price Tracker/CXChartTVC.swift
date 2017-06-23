@@ -33,26 +33,31 @@ class CXChartTVC: UITableViewController {
         let url:URL = URL(string: priceStatsURL)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let postString = "lastHours=24&maxRespArrSize=100"
+        let postString = "lastHours=7&maxRespArrSize=100"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
             }
-
-//            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-//                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-//                print("response = \(String(describing: response))")
-//            }
-            
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-                    print(json)
+                if response != nil {
+                    guard let responseArray = json as? JSONArray else {return}
+                    for responsePriceStats in responseArray {
+                        guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
+                        print(safePriceStats)
+                        self.priceStats = (CXChart(priceStatsData: safePriceStats))
+                        
+                        self.priceStatsPriceArray.append(self.priceStats?.getPriceValue ?? 0.0)
+                        self.priceStatsTimeStampArray.append(self.priceStats?.getTimeStampValue ?? "")
+                        
+                        self.tableView.reloadData()
+                    }
+                }
             } catch {
                 print("should ideally throw an error")
             }
-            
         }
         task.resume()
     }
@@ -78,12 +83,8 @@ class CXChartTVC: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? CXChartTVCell else {return UITableViewCell()}
         
         cell.currencyLabel.text = ["BTC/USD",  "ETH/USD"][indexPath.row]
-        cell.lineChartView.backgroundColor      = UIColor.white
-        cell.lineChartView.layer.borderWidth    = 0.25
-        cell.lineChartView.layer.cornerRadius   = 5
-        cell.lineChartView.layer.shadowColor    = UIColor.gray.cgColor
-        
-        // cell.lineChartView.layerGradient()
+        cell.setChart(dataPoints: self.priceStatsTimeStampArray, values: self.priceStatsPriceArray)
+        cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArray)
         
         return cell
     }
