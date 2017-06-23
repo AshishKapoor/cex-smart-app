@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0219155347F1B378241E8344 /* Pods_CEX___My_Smart_Price_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */; };
+		89639B991EFD074600DB0A15 /* CXChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89639B981EFD074600DB0A15 /* CXChart.swift */; };
 		8977AF681EFCD0FC00F7874E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF671EFCD0FC00F7874E /* AppDelegate.swift */; };
-		8977AF6A1EFCD0FC00F7874E /* CXChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF691EFCD0FC00F7874E /* CXChartVC.swift */; };
 		8977AF6C1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */; };
 		8977AF6F1EFCD0FC00F7874E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8977AF6D1EFCD0FC00F7874E /* Main.storyboard */; };
 		8977AF711EFCD0FC00F7874E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8977AF701EFCD0FC00F7874E /* Assets.xcassets */; };
@@ -17,13 +17,15 @@
 		8977AF7C1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift */; };
 		8977AF7E1EFCD38300F7874E /* CXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7D1EFCD38300F7874E /* CXConstants.swift */; };
 		8977AF801EFCD3A600F7874E /* CXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */; };
+		8977AF851EFD021800F7874E /* CXChartTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF841EFD021800F7874E /* CXChartTVC.swift */; };
+		8977AF871EFD028000F7874E /* CXChartTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF861EFD028000F7874E /* CXChartTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		742B3EDE478A24F9D868B0A0 /* Pods-CEX - My Smart Price Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEX - My Smart Price Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEX - My Smart Price Tracker/Pods-CEX - My Smart Price Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		89639B981EFD074600DB0A15 /* CXChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChart.swift; sourceTree = "<group>"; };
 		8977AF641EFCD0FC00F7874E /* CEX - My Smart Price Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CEX - My Smart Price Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8977AF671EFCD0FC00F7874E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8977AF691EFCD0FC00F7874E /* CXChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXChartVC.swift; sourceTree = "<group>"; };
 		8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPriceCurrencyVC.swift; sourceTree = "<group>"; };
 		8977AF6E1EFCD0FC00F7874E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8977AF701EFCD0FC00F7874E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,6 +34,8 @@
 		8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTradeCurrencyVC.swift; sourceTree = "<group>"; };
 		8977AF7D1EFCD38300F7874E /* CXConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXConstants.swift; sourceTree = "<group>"; };
 		8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXExtensions.swift; sourceTree = "<group>"; };
+		8977AF841EFD021800F7874E /* CXChartTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChartTVC.swift; sourceTree = "<group>"; };
+		8977AF861EFD028000F7874E /* CXChartTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChartTVCell.swift; sourceTree = "<group>"; };
 		B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_CEX___My_Smart_Price_Tracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFAF53B6D5D4162A1F040A2 /* Pods-CEX - My Smart Price Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEX - My Smart Price Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CEX - My Smart Price Tracker/Pods-CEX - My Smart Price Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +69,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		89639B9A1EFD1E3900DB0A15 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8977AF7D1EFCD38300F7874E /* CXConstants.swift */,
+				8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		8977AF5B1EFCD0FC00F7874E = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				8977AF671EFCD0FC00F7874E /* AppDelegate.swift */,
+				89639B9A1EFD1E3900DB0A15 /* Helper */,
 				8977AF721EFCD0FC00F7874E /* LaunchScreen.storyboard */,
 				8977AF6D1EFCD0FC00F7874E /* Main.storyboard */,
 				8977AF831EFCE4FC00F7874E /* Charts */,
@@ -94,8 +108,6 @@
 				8977AF821EFCE4F900F7874E /* Trade History */,
 				8977AF701EFCD0FC00F7874E /* Assets.xcassets */,
 				8977AF751EFCD0FC00F7874E /* Info.plist */,
-				8977AF7D1EFCD38300F7874E /* CXConstants.swift */,
-				8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */,
 			);
 			path = "CEX - My Smart Price Tracker";
 			sourceTree = "<group>";
@@ -119,7 +131,9 @@
 		8977AF831EFCE4FC00F7874E /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				8977AF691EFCD0FC00F7874E /* CXChartVC.swift */,
+				8977AF841EFD021800F7874E /* CXChartTVC.swift */,
+				8977AF861EFD028000F7874E /* CXChartTVCell.swift */,
+				89639B981EFD074600DB0A15 /* CXChart.swift */,
 			);
 			name = Charts;
 			sourceTree = "<group>";
@@ -251,9 +265,11 @@
 				8977AF801EFCD3A600F7874E /* CXExtensions.swift in Sources */,
 				8977AF7E1EFCD38300F7874E /* CXConstants.swift in Sources */,
 				8977AF6C1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift in Sources */,
+				8977AF851EFD021800F7874E /* CXChartTVC.swift in Sources */,
+				8977AF871EFD028000F7874E /* CXChartTVCell.swift in Sources */,
+				89639B991EFD074600DB0A15 /* CXChart.swift in Sources */,
 				8977AF681EFCD0FC00F7874E /* AppDelegate.swift in Sources */,
 				8977AF7C1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift in Sources */,
-				8977AF6A1EFCD0FC00F7874E /* CXChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

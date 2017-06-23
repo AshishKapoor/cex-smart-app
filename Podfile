@@ -6,5 +6,6 @@ target 'CEX - My Smart Price Tracker' do
   use_frameworks!
 
   # Pods for CEX - My Smart Price Tracker
-  pod 'SwiftCharts', '~> 0.6'
+  pod 'Charts'
+  
 end
