@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		8977AF681EFCD0FC00F7874E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF671EFCD0FC00F7874E /* AppDelegate.swift */; };
-		8977AF6A1EFCD0FC00F7874E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF691EFCD0FC00F7874E /* FirstViewController.swift */; };
-		8977AF6C1EFCD0FC00F7874E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF6B1EFCD0FC00F7874E /* SecondViewController.swift */; };
+		8977AF6A1EFCD0FC00F7874E /* CXChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF691EFCD0FC00F7874E /* CXChartVC.swift */; };
+		8977AF6C1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */; };
 		8977AF6F1EFCD0FC00F7874E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8977AF6D1EFCD0FC00F7874E /* Main.storyboard */; };
 		8977AF711EFCD0FC00F7874E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8977AF701EFCD0FC00F7874E /* Assets.xcassets */; };
 		8977AF741EFCD0FC00F7874E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8977AF721EFCD0FC00F7874E /* LaunchScreen.storyboard */; };
+		8977AF7C1EFCD1FA00F7874E /* CXTradeCurrencyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyTVC.swift */; };
+		8977AF7E1EFCD38300F7874E /* CXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7D1EFCD38300F7874E /* CXConstants.swift */; };
+		8977AF801EFCD3A600F7874E /* CXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8977AF641EFCD0FC00F7874E /* CEX - My Smart Price Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CEX - My Smart Price Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8977AF671EFCD0FC00F7874E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8977AF691EFCD0FC00F7874E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		8977AF6B1EFCD0FC00F7874E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8977AF691EFCD0FC00F7874E /* CXChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXChartVC.swift; sourceTree = "<group>"; };
+		8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CXPriceCurrencyVC.swift; sourceTree = "<group>"; };
 		8977AF6E1EFCD0FC00F7874E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8977AF701EFCD0FC00F7874E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8977AF731EFCD0FC00F7874E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8977AF751EFCD0FC00F7874E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTradeCurrencyTVC.swift; sourceTree = "<group>"; };
+		8977AF7D1EFCD38300F7874E /* CXConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXConstants.swift; sourceTree = "<group>"; };
+		8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				8977AF671EFCD0FC00F7874E /* AppDelegate.swift */,
-				8977AF691EFCD0FC00F7874E /* FirstViewController.swift */,
-				8977AF6B1EFCD0FC00F7874E /* SecondViewController.swift */,
+				8977AF691EFCD0FC00F7874E /* CXChartVC.swift */,
+				8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */,
+				8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyTVC.swift */,
 				8977AF6D1EFCD0FC00F7874E /* Main.storyboard */,
 				8977AF701EFCD0FC00F7874E /* Assets.xcassets */,
 				8977AF721EFCD0FC00F7874E /* LaunchScreen.storyboard */,
 				8977AF751EFCD0FC00F7874E /* Info.plist */,
+				8977AF7D1EFCD38300F7874E /* CXConstants.swift */,
+				8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */,
 			);
 			path = "CEX - My Smart Price Tracker";
 			sourceTree = "<group>";
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8977AF6C1EFCD0FC00F7874E /* SecondViewController.swift in Sources */,
+				8977AF801EFCD3A600F7874E /* CXExtensions.swift in Sources */,
+				8977AF7E1EFCD38300F7874E /* CXConstants.swift in Sources */,
+				8977AF6C1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift in Sources */,
 				8977AF681EFCD0FC00F7874E /* AppDelegate.swift in Sources */,
-				8977AF6A1EFCD0FC00F7874E /* FirstViewController.swift in Sources */,
+				8977AF7C1EFCD1FA00F7874E /* CXTradeCurrencyTVC.swift in Sources */,
+				8977AF6A1EFCD0FC00F7874E /* CXChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
