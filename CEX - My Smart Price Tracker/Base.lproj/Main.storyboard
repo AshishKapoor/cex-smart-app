@@ -121,7 +121,10 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="Hty-G2-Jjt" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -133,15 +136,19 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Charts-->
         <scene sceneID="ybU-le-aEz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hty-G2-Jjt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icons8-candle_sticks" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Charts" image="icons8-candle_sticks" selectedImage="icons8-candle_sticks" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nvD-zq-OLH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nvD-zq-OLH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17820397020000001" green="0.70222938059999995" blue="0.49688732619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -152,15 +159,19 @@
             </objects>
             <point key="canvasLocation" x="1197.5999999999999" y="-331.48425787106447"/>
         </scene>
-        <!--Currency-->
+        <!--Price Currency-->
         <scene sceneID="hAW-Jz-Jh3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SCQ-ES-Fbs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Currency" image="icons8-bitcoin" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Price Currency" image="icons8-bitcoin" selectedImage="icons8-bitcoin" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3PD-Lt-Vha">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3PD-Lt-Vha">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17820397020000001" green="0.70222938059999995" blue="0.49688732619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -175,11 +186,15 @@
         <scene sceneID="j4x-zt-plC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CKN-p6-WWd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trade History" image="icons8-order_history" id="BEs-Zh-Jyg"/>
+                    <tabBarItem key="tabBarItem" title="Trade History" image="icons8-order_history" selectedImage="icons8-order_history" id="BEs-Zh-Jyg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P2G-WM-UfQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P2G-WM-UfQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17820397020000001" green="0.70222938059999995" blue="0.49688732619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

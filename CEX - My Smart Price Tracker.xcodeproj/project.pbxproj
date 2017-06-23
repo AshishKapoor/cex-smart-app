@@ -32,7 +32,7 @@
 		8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTradeCurrencyVC.swift; sourceTree = "<group>"; };
 		8977AF7D1EFCD38300F7874E /* CXConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXConstants.swift; sourceTree = "<group>"; };
 		8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXExtensions.swift; sourceTree = "<group>"; };
-		B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CEX___My_Smart_Price_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_CEX___My_Smart_Price_Tracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFAF53B6D5D4162A1F040A2 /* Pods-CEX - My Smart Price Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEX - My Smart Price Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CEX - My Smart Price Tracker/Pods-CEX - My Smart Price Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,17 +87,41 @@
 			isa = PBXGroup;
 			children = (
 				8977AF671EFCD0FC00F7874E /* AppDelegate.swift */,
-				8977AF691EFCD0FC00F7874E /* CXChartVC.swift */,
-				8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */,
-				8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift */,
-				8977AF6D1EFCD0FC00F7874E /* Main.storyboard */,
-				8977AF701EFCD0FC00F7874E /* Assets.xcassets */,
 				8977AF721EFCD0FC00F7874E /* LaunchScreen.storyboard */,
+				8977AF6D1EFCD0FC00F7874E /* Main.storyboard */,
+				8977AF831EFCE4FC00F7874E /* Charts */,
+				8977AF811EFCE4F600F7874E /* Currency */,
+				8977AF821EFCE4F900F7874E /* Trade History */,
+				8977AF701EFCD0FC00F7874E /* Assets.xcassets */,
 				8977AF751EFCD0FC00F7874E /* Info.plist */,
 				8977AF7D1EFCD38300F7874E /* CXConstants.swift */,
 				8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */,
 			);
 			path = "CEX - My Smart Price Tracker";
+			sourceTree = "<group>";
+		};
+		8977AF811EFCE4F600F7874E /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */,
+			);
+			name = Currency;
+			sourceTree = "<group>";
+		};
+		8977AF821EFCE4F900F7874E /* Trade History */ = {
+			isa = PBXGroup;
+			children = (
+				8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift */,
+			);
+			name = "Trade History";
+			sourceTree = "<group>";
+		};
+		8977AF831EFCE4FC00F7874E /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				8977AF691EFCD0FC00F7874E /* CXChartVC.swift */,
+			);
+			name = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +421,7 @@
 				8977AF7A1EFCD0FC00F7874E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
