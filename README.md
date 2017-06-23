@@ -15,5 +15,4 @@ Trade History from CEX.IO 🕶|
 
 ## Cocoapods: 
 (Use of OpenSource)
-Charts,
-Alamofire
+SwiftCharts
