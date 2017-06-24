@@ -26,9 +26,24 @@ class CXChartTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         title = "Charts"
         
-        loadData()
-        
         tableView.tableFooterView = UIView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if !(self.priceStatsPriceArray.isEmpty) {
+            print("YES:::")
+            self.priceStatsPriceArray.removeAll()
+            self.priceStatsTimeStampArray.removeAll()
+        } else {
+            loadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(true)
+        self.priceStatsPriceArray.removeAll()
+        self.priceStatsTimeStampArray.removeAll()
     }
     
     func loadData () {

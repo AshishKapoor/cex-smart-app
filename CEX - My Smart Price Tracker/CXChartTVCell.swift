@@ -34,6 +34,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
     
     func setChart(dataPoints: [String], values: [Double]) {
         lineChartView.noDataText = "You need to provide data for the chart."
+        lineChartView.noDataTextColor = UIColor.orange
         var dataEntries: [BarChartDataEntry] = []
         
         for points in 0..<dataPoints.count {
@@ -46,6 +47,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         lineChartDataSet.colors = [UIColor.green]
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
+        lineChartView.animate(xAxisDuration: 1.5, easingOption: .easeInBack)
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
