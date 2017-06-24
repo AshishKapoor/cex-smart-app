@@ -27,6 +27,8 @@ class CXChartTVC: UITableViewController {
         title = "Charts"
         
         loadData()
+        
+        tableView.tableFooterView = UIView()
     }
     
     func loadData () {
@@ -46,7 +48,6 @@ class CXChartTVC: UITableViewController {
                     guard let responseArray = json as? JSONArray else {return}
                     for responsePriceStats in responseArray {
                         guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
-                        print(safePriceStats)
                         self.priceStats = (CXChart(priceStatsData: safePriceStats))
                         
                         self.priceStatsPriceArray.append(self.priceStats?.getPriceValue ?? 0.0)

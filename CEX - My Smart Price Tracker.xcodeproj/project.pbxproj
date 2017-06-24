@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0219155347F1B378241E8344 /* Pods_CEX___My_Smart_Price_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */; };
+		8918E31A1EFEAFF60019AF42 /* CXCurrencyLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8918E3191EFEAFF60019AF42 /* CXCurrencyLimit.swift */; };
 		89639B991EFD074600DB0A15 /* CXChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89639B981EFD074600DB0A15 /* CXChart.swift */; };
 		8977AF681EFCD0FC00F7874E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF671EFCD0FC00F7874E /* AppDelegate.swift */; };
 		8977AF6C1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		742B3EDE478A24F9D868B0A0 /* Pods-CEX - My Smart Price Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEX - My Smart Price Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEX - My Smart Price Tracker/Pods-CEX - My Smart Price Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		8918E3191EFEAFF60019AF42 /* CXCurrencyLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXCurrencyLimit.swift; sourceTree = "<group>"; };
 		89639B981EFD074600DB0A15 /* CXChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChart.swift; sourceTree = "<group>"; };
 		8977AF641EFCD0FC00F7874E /* CEX - My Smart Price Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CEX - My Smart Price Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8977AF671EFCD0FC00F7874E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */,
+				8918E3191EFEAFF60019AF42 /* CXCurrencyLimit.swift */,
 			);
 			name = Currency;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				8977AF801EFCD3A600F7874E /* CXExtensions.swift in Sources */,
 				8977AF7E1EFCD38300F7874E /* CXConstants.swift in Sources */,
 				8977AF6C1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift in Sources */,
+				8918E31A1EFEAFF60019AF42 /* CXCurrencyLimit.swift in Sources */,
 				8977AF851EFD021800F7874E /* CXChartTVC.swift in Sources */,
 				8977AF871EFD028000F7874E /* CXChartTVCell.swift in Sources */,
 				89639B991EFD074600DB0A15 /* CXChart.swift in Sources */,
