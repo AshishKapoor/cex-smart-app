@@ -118,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				8977AF6B1EFCD0FC00F7874E /* CXPriceCurrencyVC.swift */,
-				8918E3191EFEAFF60019AF42 /* CXCurrencyLimit.swift */,
 			);
 			name = Currency;
 			sourceTree = "<group>";
@@ -126,6 +125,7 @@
 		8977AF821EFCE4F900F7874E /* Trade History */ = {
 			isa = PBXGroup;
 			children = (
+				8918E3191EFEAFF60019AF42 /* CXCurrencyLimit.swift */,
 				8977AF7B1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift */,
 			);
 			name = "Trade History";

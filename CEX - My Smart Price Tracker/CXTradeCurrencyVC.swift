@@ -25,11 +25,43 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         tableView.tableFooterView = UIView()
+        
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadData () {
+        let url:URL = URL(string: currencyLimitsURL)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+//        let postString = "lastHours=7&maxRespArrSize=100"
+//        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data)
+                print(json)
+//                if response != nil {
+//                    guard let responseArray = json as? JSONArray else {return}
+//                    for responsePriceStats in responseArray {
+//                        guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
+//                        
+//                        
+//                        self.tableView.reloadData()
+//                    }
+//                }
+            } catch {
+                print("should ideally throw an error")
+            }
+        }
+        task.resume()
     }
 
     // MARK: - Table view data source
