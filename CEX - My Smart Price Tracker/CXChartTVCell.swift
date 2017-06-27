@@ -28,14 +28,14 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
     }
     
     func addXValuesToBarChartView(time: [String]) {
-        lineChartView.xAxis.labelCount = time.count
-        lineChartView.xAxis.labelTextColor = UIColor.black
-        lineChartView.xAxis.axisRange = Double(time.count)
+        lineChartView.xAxis.labelTextColor  = UIColor.barGraphChartColor()
+        lineChartView.xAxis.axisRange       = Double(time.count)
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
-        lineChartView.noDataText = "You need to provide data for the chart."
-        lineChartView.noDataTextColor = UIColor.orange
+        lineChartView.noDataText        = "You need to provide data for the chart."
+        lineChartView.noDataTextColor   = UIColor.black
+        
         var dataEntries: [BarChartDataEntry] = []
         
         for points in 0..<dataPoints.count {
@@ -45,10 +45,17 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "ETH - USD conversion")
 //        lineChartDataSet.colors = ChartColorTemplates.colorful()
-        lineChartDataSet.colors = [UIColor.green]
+        lineChartDataSet.colors                 = [UIColor.green]
+        lineChartDataSet.circleColors           = [UIColor.black]
+        lineChartDataSet.circleRadius           = 2.0
+//        lineChartDataSet.drawCirclesEnabled     = false
+        lineChartDataSet.lineWidth              = 1.0
+        lineChartDataSet.valueFont              = UIFont.systemFont(ofSize: 8.0)
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
-        lineChartView.animate(xAxisDuration: 1.5, easingOption: .easeInBack)
+        lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
+        lineChartView.chartDescription?.text = "SpellMenuCell"
+
     }
     
 //    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {

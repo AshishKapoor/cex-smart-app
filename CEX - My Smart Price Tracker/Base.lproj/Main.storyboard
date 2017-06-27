@@ -69,8 +69,14 @@
                                 <segment title="1 Month"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="timeSegmentAction:" destination="vtP-Cc-XJp" eventType="valueChanged" id="3d3-BC-Afg"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="timeSegmentControl" destination="bcr-x9-oDL" id="oxZ-Y7-dBD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8Z-9g-1LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

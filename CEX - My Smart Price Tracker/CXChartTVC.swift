@@ -15,65 +15,81 @@ class CXChartTVC: UITableViewController {
     var priceStatsPriceArray = [Double]()
     var priceStatsTimeStampArray = [String]()
     
+    @IBOutlet weak var timeSegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         title = "Charts"
-        
         tableView.tableFooterView = UIView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if !(self.priceStatsPriceArray.isEmpty) {
-            self.priceStatsPriceArray.removeAll()
-            self.priceStatsTimeStampArray.removeAll()
-        } else {
-            loadData()
+    @IBAction func timeSegmentAction(_ sender: UISegmentedControl) {
+        switch timeSegmentControl.selectedSegmentIndex
+        {
+        case 0:
+            clearOldData()
+            loadData(time: timeStampValue(timePeriod: timeSpan.aDay))
+            break
+        case 1:
+            clearOldData()
+            loadData(time: timeStampValue(timePeriod: timeSpan.aWeek))
+            break
+        case 2:
+            clearOldData()
+            loadData(time: timeStampValue(timePeriod: timeSpan.aMonth))
+            break
+        default:
+            break
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if !(self.priceStatsPriceArray.isEmpty) {
+            clearOldData()
+        } else {
+            timeSegmentControl.selectedSegmentIndex = 0
+            loadData(time: timeStampValue(timePeriod: timeSpan.aDay))
+        }
+    }
+    
+    func clearOldData() -> Void {
         self.priceStatsPriceArray.removeAll()
         self.priceStatsTimeStampArray.removeAll()
     }
     
-    func loadData () {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.priceStatsPriceArray.removeAll()
+        self.priceStatsTimeStampArray.removeAll()
+    }
+    
+    func loadData(time: Int) {
         let url:URL = URL(string: priceStatsURL)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let postString = "lastHours=7&maxRespArrSize=100"
+        
+        let postString = "lastHours=\(time)&maxRespArrSize=10"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
                 return
-            }
-            do {
+            }; do {
                 let json = try JSONSerialization.jsonObject(with: data)
                 if response != nil {
                     guard let responseArray = json as? JSONArray else {return}
                     for responsePriceStats in responseArray {
                         guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
                         self.priceStats = (CXChart(priceStatsData: safePriceStats))
-                        
                         self.priceStatsPriceArray.append(self.priceStats?.getPriceValue ?? 0.0)
                         self.priceStatsTimeStampArray.append(self.priceStats?.getTimeStampValue ?? "")
-                        
                         // Background thread.
                         DispatchQueue.global(qos: .background).async {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
                             }
                         }
-                        
                     }
                 }
             } catch {

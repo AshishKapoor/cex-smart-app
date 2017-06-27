@@ -13,18 +13,39 @@ public typealias JSONDictionary = Dictionary<String, Any>
 public typealias JSONArray = Array<Any>
 
 
-enum TimeSpan {
-    case oneDay, oneWeek, oneMonth
+public enum timeSpan {
+    case aDay
+    case aWeek
+    case aMonth
 }
 
-var timeSpanValue: [(TimeSpan, Int)] = [(.oneDay, 24), (.oneWeek, 24*7), (.oneMonth, 24*30)]
+//var timeSpanValue: [(timeSpan, Int)] = [
+//    (.oneDay, 24),
+//    (.oneWeek, 168),
+//    (.oneMonth, 720)
+//]
+
+func timeStampValue(timePeriod: timeSpan) -> Int {
+    switch timePeriod {
+    case .aDay:
+        return 24
+    case .aWeek:
+        return 168
+    case .aMonth:
+        return 720
+    }
+}
 
 public enum priceStatsParam: String {
     case lastHours, maxRespArrSize
 }
 
-public enum cryptocurreny: String {
-    case BTC, USD, EUR, ETH
+public enum cryptocurrency: String {
+    case BTC, ETH
+}
+
+public enum currency: String {
+    case USD, EUR
 }
 
 public enum httpMethod: String {
@@ -35,7 +56,7 @@ let cexURL = "https://cex.io/api/"
 let priceStats = "price_stats"
 let currencyLimits = "currency_limits"
 
-let convertEthToUSD = "\(cryptocurreny.ETH.rawValue)/\(cryptocurreny.USD.rawValue)"
+let convertEthToUSD = "\(cryptocurrency.ETH.rawValue)/\(currency.USD.rawValue)"
 
 let priceStatsURL = "\(cexURL)\(priceStats)/\(convertEthToUSD)/"
 let currencyLimitsURL = "\(cexURL)\(currencyLimits)"
