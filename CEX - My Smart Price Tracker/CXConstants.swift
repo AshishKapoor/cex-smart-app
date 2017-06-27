@@ -12,7 +12,6 @@ public typealias JSON = Any
 public typealias JSONDictionary = Dictionary<String, Any>
 public typealias JSONArray = Array<Any>
 
-
 public enum timeSpan {
     case aDay
     case aWeek
@@ -53,8 +52,11 @@ public enum httpMethod: String {
 }
 
 let cexURL = "https://cex.io/api/"
+let lastPrices = "last_prices/BTC/ETH/USD/EUR"
+
 let priceStats = "price_stats"
 let currencyLimits = "currency_limits"
+
 
 let convertEthToUSD = "\(cryptocurrency.ETH.rawValue)/\(currency.USD.rawValue)"
 let priceStatsEthURL = "\(cexURL)\(priceStats)/\(convertEthToUSD)/"
@@ -63,3 +65,4 @@ let convertBtcToUSD = "\(cryptocurrency.BTC.rawValue)/\(currency.USD.rawValue)"
 let priceStatsBtcURL = "\(cexURL)\(priceStats)/\(convertBtcToUSD)/"
 
 let currencyLimitsURL = "\(cexURL)\(currencyLimits)"
+let lastPricesURL = "\(cexURL)\(lastPrices)"

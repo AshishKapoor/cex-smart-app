@@ -20,7 +20,6 @@ class CXChart: NSObject {
         self._price     = parsedPrice
         
         guard let parsedTimeStamp = priceStatsData["tmsp"] as? TimeInterval else {return}
-        // Converting UNIX Time Interval to Date format
         let date = Date(timeIntervalSince1970: parsedTimeStamp)
         self._timeStamp = date
     }

@@ -12,6 +12,9 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var tableView: UITableView!
     
+    var lastPrices: CXLastPrices? = nil
+    var lastPriceArray: [String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Price Currency"
@@ -19,7 +22,42 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.delegate = self
         tableView.dataSource = self
         
+        loadData()
+        
         tableView.tableFooterView = UIView()
+    }
+    
+    func loadData () {
+        let url:URL = URL(string: lastPricesURL)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {print("error=\(String(describing: error))"); return}
+            do {
+                let json = try JSONSerialization.jsonObject(with: data)
+                for (key,value) in (json as? JSONDictionary)! {
+                    if key == "data" {
+                        guard let valueJSONArray = value as? JSONArray else {return}
+                        for pairs in valueJSONArray {
+                            self.lastPrices = (CXLastPrices(priceStatsData: pairs as! JSONDictionary))
+                            print(self.lastPrices?.getLastPrice ?? "")
+//                            print(self.lastPrices?.getSymbol1 ?? "")
+//                            print(self.lastPrices?.getSymbol2 ?? "")
+                        }
+                    }
+                }
+                self.lastPriceArray?.append((self.lastPrices?.getLastPrice)!)
+                
+                DispatchQueue.global(qos: .background).async {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            } catch {
+                print("should ideally throw an error")
+            }
+        }
+        task.resume()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,8 +70,8 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = "123"
-        cell.detailTextLabel?.text = "$321"
+        cell.textLabel?.text = lastPriceArray?[indexPath.row]
+//        cell.detailTextLabel?.text = self.lastPrices?.getLastPrice[indexPath.row]
         
         return cell
     }
