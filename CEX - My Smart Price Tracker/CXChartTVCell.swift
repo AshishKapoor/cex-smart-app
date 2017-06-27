@@ -30,6 +30,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
     func addXValuesToBarChartView(time: [String]) {
         lineChartView.xAxis.labelCount = time.count
         lineChartView.xAxis.labelTextColor = UIColor.black
+        lineChartView.xAxis.axisRange = Double(time.count)
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -50,23 +51,23 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         lineChartView.animate(xAxisDuration: 1.5, easingOption: .easeInBack)
     }
     
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("Entry X: \(entry.x)")
-        print("Entry Y: \(entry.y)")
-        print("Highlight X: \(highlight.x)")
-        print("Highlight Y: \(highlight.y)")
-        print("DataIndex: \(highlight.dataIndex)")
-        print("DataSetIndex: \(highlight.dataSetIndex)")
-        print("StackIndex: \(highlight.stackIndex)\n\n")
-    }
+//    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+//        print("Entry X: \(entry.x)")
+//        print("Entry Y: \(entry.y)")
+//        print("Highlight X: \(highlight.x)")
+//        print("Highlight Y: \(highlight.y)")
+//        print("DataIndex: \(highlight.dataIndex)")
+//        print("DataSetIndex: \(highlight.dataSetIndex)")
+//        print("StackIndex: \(highlight.stackIndex)\n\n")
+//    }
     
 //    public func stringForValue(value: Double, axis: AxisBase?) -> String {
 //        return priceStatsTimeStampArray[Int(value)]
 //    }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
 }

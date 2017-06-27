@@ -32,7 +32,6 @@ class CXChartTVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if !(self.priceStatsPriceArray.isEmpty) {
-            print("YES:::")
             self.priceStatsPriceArray.removeAll()
             self.priceStatsTimeStampArray.removeAll()
         } else {
@@ -68,7 +67,13 @@ class CXChartTVC: UITableViewController {
                         self.priceStatsPriceArray.append(self.priceStats?.getPriceValue ?? 0.0)
                         self.priceStatsTimeStampArray.append(self.priceStats?.getTimeStampValue ?? "")
                         
-                        self.tableView.reloadData()
+                        // Background thread.
+                        DispatchQueue.global(qos: .background).async {
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                        
                     }
                 }
             } catch {
@@ -101,7 +106,7 @@ class CXChartTVC: UITableViewController {
         cell.currencyLabel.text = ["BTC/USD",  "ETH/USD"][indexPath.row]
         cell.setChart(dataPoints: self.priceStatsTimeStampArray, values: self.priceStatsPriceArray)
         cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArray)
-        
+
         return cell
     }
 
