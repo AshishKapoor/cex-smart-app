@@ -55,9 +55,8 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
         lineChartView.chartDescription?.text = "SpellMenuCell"
-
+        
     }
-    
 //    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
 //        print("Entry X: \(entry.x)")
 //        print("Entry Y: \(entry.y)")
@@ -72,9 +71,9 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
 //        return priceStatsTimeStampArray[Int(value)]
 //    }
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
 }

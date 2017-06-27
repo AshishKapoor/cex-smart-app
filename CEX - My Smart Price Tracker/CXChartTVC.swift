@@ -24,8 +24,7 @@ class CXChartTVC: UITableViewController {
     }
 
     @IBAction func timeSegmentAction(_ sender: UISegmentedControl) {
-        switch timeSegmentControl.selectedSegmentIndex
-        {
+        switch sender.selectedSegmentIndex {
         case 0:
             clearOldData()
             loadData(time: timeStampValue(timePeriod: timeSpan.aDay))
@@ -60,15 +59,13 @@ class CXChartTVC: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.priceStatsPriceArray.removeAll()
-        self.priceStatsTimeStampArray.removeAll()
+        clearOldData()
     }
     
     func loadData(time: Int) {
         let url:URL = URL(string: priceStatsURL)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
         let postString = "lastHours=\(time)&maxRespArrSize=10"
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -84,7 +81,6 @@ class CXChartTVC: UITableViewController {
                         self.priceStats = (CXChart(priceStatsData: safePriceStats))
                         self.priceStatsPriceArray.append(self.priceStats?.getPriceValue ?? 0.0)
                         self.priceStatsTimeStampArray.append(self.priceStats?.getTimeStampValue ?? "")
-                        // Background thread.
                         DispatchQueue.global(qos: .background).async {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
@@ -92,9 +88,7 @@ class CXChartTVC: UITableViewController {
                         }
                     }
                 }
-            } catch {
-                print("should ideally throw an error")
-            }
+            } catch {}
         }
         task.resume()
     }
