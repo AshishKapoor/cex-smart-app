@@ -14,6 +14,9 @@ class CXLastPrices: NSObject {
     private var _symbol2: String?
     private var _lprice: String?
     
+    override init() {
+    }
+    
     init(priceStatsData: JSONDictionary) {
         super.init()
         guard let parsedLastPrice = priceStatsData["lprice"] as? String else {return}

@@ -12,19 +12,33 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var tableView: UITableView!
     
-    var lastPrices: CXLastPrices? = nil
-    var lastPriceArray: [String]?
+    var lastPrices      = CXLastPrices()
+    
+    var lastPriceArray  = [String]()
+    var symbol1Array    = [String]()
+    var symbol2Array    = [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Price Currency"
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        loadData()
-        
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        loadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        clearOldData()
+    }
+    
+    func clearOldData() -> Void {
+        
     }
     
     func loadData () {
@@ -40,13 +54,13 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
                         guard let valueJSONArray = value as? JSONArray else {return}
                         for pairs in valueJSONArray {
                             self.lastPrices = (CXLastPrices(priceStatsData: pairs as! JSONDictionary))
-                            print(self.lastPrices?.getLastPrice ?? "")
-//                            print(self.lastPrices?.getSymbol1 ?? "")
-//                            print(self.lastPrices?.getSymbol2 ?? "")
+                            print(self.lastPrices.getLastPrice)
+                            self.lastPriceArray.append(self.lastPrices.getLastPrice)
+                            self.symbol1Array.append(self.lastPrices.getSymbol1)
+                            self.symbol2Array.append(self.lastPrices.getSymbol2)
                         }
                     }
                 }
-                self.lastPriceArray?.append((self.lastPrices?.getLastPrice)!)
                 
                 DispatchQueue.global(qos: .background).async {
                     DispatchQueue.main.async {
@@ -65,12 +79,12 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.lastPriceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = lastPriceArray?[indexPath.row]
+        cell.textLabel?.text = lastPriceArray[indexPath.row]
 //        cell.detailTextLabel?.text = self.lastPrices?.getLastPrice[indexPath.row]
         
         return cell
