@@ -159,12 +159,14 @@ class CXChartTVC: UITableViewController {
         
         if indexPath.row == 0 {
             cell.currencyLabel.text = priceCurrency.first
-            cell.setChart(dataPoints: self.priceStatsTimeStampArrayForBtc, values: self.priceStatsPriceArrayForBtc)
+            cell.setChartBtc(dataPoints: self.priceStatsTimeStampArrayForBtc, values: self.priceStatsPriceArrayForBtc)
             cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArrayForBtc)
+            
         } else {
             cell.currencyLabel.text = priceCurrency.last
-            cell.setChart(dataPoints: self.priceStatsTimeStampArrayForEth, values: self.priceStatsPriceArrayForEth)
+            cell.setChartEth(dataPoints: self.priceStatsTimeStampArrayForEth, values: self.priceStatsPriceArrayForEth)
             cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArrayForEth)
+            
         }
         return cell
     }
