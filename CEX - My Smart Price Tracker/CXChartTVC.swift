@@ -12,8 +12,13 @@ class CXChartTVC: UITableViewController {
 
     var priceStats: CXChart?
     
-    var priceStatsPriceArray = [Double]()
-    var priceStatsTimeStampArray = [String]()
+    var priceStatsPriceArrayForEth      = [Double]()
+    var priceStatsTimeStampArrayForEth  = [String]()
+    
+    var priceStatsPriceArrayForBtc      = [Double]()
+    var priceStatsTimeStampArrayForBtc  = [String]()
+    
+    var priceCurrency                   = ["BTC/USD","ETH/USD"]
     
     @IBOutlet weak var timeSegmentControl: UISegmentedControl!
     
@@ -27,15 +32,18 @@ class CXChartTVC: UITableViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             clearOldData()
-            loadData(time: timeStampValue(timePeriod: timeSpan.aDay))
+            loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aDay))
+            loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aDay))
             break
         case 1:
             clearOldData()
-            loadData(time: timeStampValue(timePeriod: timeSpan.aWeek))
+            loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aWeek))
+            loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aWeek))
             break
         case 2:
             clearOldData()
-            loadData(time: timeStampValue(timePeriod: timeSpan.aMonth))
+            loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aMonth))
+            loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aMonth))
             break
         default:
             break
@@ -44,17 +52,22 @@ class CXChartTVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if !(self.priceStatsPriceArray.isEmpty) {
+        if !(self.priceStatsPriceArrayForEth.isEmpty) {
             clearOldData()
         } else {
             timeSegmentControl.selectedSegmentIndex = 0
-            loadData(time: timeStampValue(timePeriod: timeSpan.aDay))
+            loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aDay))
+            loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aDay))
         }
     }
     
     func clearOldData() -> Void {
-        self.priceStatsPriceArray.removeAll()
-        self.priceStatsTimeStampArray.removeAll()
+        
+        self.priceStatsPriceArrayForEth.removeAll()
+        self.priceStatsTimeStampArrayForEth.removeAll()
+        
+        self.priceStatsPriceArrayForBtc.removeAll()
+        self.priceStatsTimeStampArrayForBtc.removeAll()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,9 +75,9 @@ class CXChartTVC: UITableViewController {
         clearOldData()
     }
     
-    func loadData(time: Int) {
-        let url:URL = URL(string: priceStatsURL)!
-        var request = URLRequest(url: url)
+    func loadDataForEth(time: Int) {
+        let newURL:URL = URL(string: priceStatsEthURL)!
+        var request = URLRequest(url: newURL)
         request.httpMethod = "POST"
         let postString = "lastHours=\(time)&maxRespArrSize=10"
         request.httpBody = postString.data(using: .utf8)
@@ -79,8 +92,39 @@ class CXChartTVC: UITableViewController {
                     for responsePriceStats in responseArray {
                         guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
                         self.priceStats = (CXChart(priceStatsData: safePriceStats))
-                        self.priceStatsPriceArray.append(self.priceStats?.getPriceValue ?? 0.0)
-                        self.priceStatsTimeStampArray.append(self.priceStats?.getTimeStampValue ?? "")
+                        self.priceStatsPriceArrayForEth.append(self.priceStats?.getPriceValue ?? 0.0)
+                        self.priceStatsTimeStampArrayForEth.append(self.priceStats?.getTimeStampValue ?? "")
+                        DispatchQueue.global(qos: .background).async {
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            } catch {}
+        }
+        task.resume()
+    }
+    
+    func loadDataForBtc(time: Int) {
+        let newURL:URL = URL(string: priceStatsBtcURL)!
+        var request = URLRequest(url: newURL)
+        request.httpMethod = "POST"
+        let postString = "lastHours=\(time)&maxRespArrSize=10"
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(String(describing: error))")
+                return
+            }; do {
+                let json = try JSONSerialization.jsonObject(with: data)
+                if response != nil {
+                    guard let responseArray = json as? JSONArray else {return}
+                    for responsePriceStats in responseArray {
+                        guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
+                        self.priceStats = (CXChart(priceStatsData: safePriceStats))
+                        self.priceStatsPriceArrayForBtc.append(self.priceStats?.getPriceValue ?? 0.0)
+                        self.priceStatsTimeStampArrayForBtc.append(self.priceStats?.getTimeStampValue ?? "")
                         DispatchQueue.global(qos: .background).async {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
@@ -113,56 +157,15 @@ class CXChartTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? CXChartTVCell else {return UITableViewCell()}
         
-        cell.currencyLabel.text = ["BTC/USD",  "ETH/USD"][indexPath.row]
-        cell.setChart(dataPoints: self.priceStatsTimeStampArray, values: self.priceStatsPriceArray)
-        cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArray)
-
+        if indexPath.row == 0 {
+            cell.currencyLabel.text = priceCurrency.first
+            cell.setChart(dataPoints: self.priceStatsTimeStampArrayForBtc, values: self.priceStatsPriceArrayForBtc)
+            cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArrayForBtc)
+        } else {
+            cell.currencyLabel.text = priceCurrency.last
+            cell.setChart(dataPoints: self.priceStatsTimeStampArrayForEth, values: self.priceStatsPriceArrayForEth)
+            cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArrayForEth)
+        }
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

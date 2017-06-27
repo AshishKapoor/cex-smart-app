@@ -57,6 +57,9 @@ let priceStats = "price_stats"
 let currencyLimits = "currency_limits"
 
 let convertEthToUSD = "\(cryptocurrency.ETH.rawValue)/\(currency.USD.rawValue)"
+let priceStatsEthURL = "\(cexURL)\(priceStats)/\(convertEthToUSD)/"
 
-let priceStatsURL = "\(cexURL)\(priceStats)/\(convertEthToUSD)/"
+let convertBtcToUSD = "\(cryptocurrency.BTC.rawValue)/\(currency.USD.rawValue)"
+let priceStatsBtcURL = "\(cexURL)\(priceStats)/\(convertBtcToUSD)/"
+
 let currencyLimitsURL = "\(cexURL)\(currencyLimits)"

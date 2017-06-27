@@ -43,7 +43,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
             dataEntries.append(dataEntry)
         }
         
-        let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "ETH - USD conversion")
+        let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "")
 //        lineChartDataSet.colors = ChartColorTemplates.colorful()
         lineChartDataSet.colors                 = [UIColor.green]
         lineChartDataSet.circleColors           = [UIColor.black]
@@ -54,7 +54,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
-        lineChartView.chartDescription?.text = "SpellMenuCell"
+        lineChartView.chartDescription?.text = ""
         
     }
 //    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
