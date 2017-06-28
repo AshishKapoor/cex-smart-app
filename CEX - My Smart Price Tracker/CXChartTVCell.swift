@@ -28,7 +28,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
     }
     
     func addXValuesToBarChartView(time: [String]) {
-        lineChartView.xAxis.labelTextColor  = UIColor.barGraphChartColor()
+        lineChartView.xAxis.labelTextColor  = UIColor.appGreen()
         lineChartView.xAxis.axisRange       = Double(time.count)
     }
     
@@ -44,18 +44,16 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         }
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "BTC/USD")
-//        lineChartDataSet.colors = ChartColorTemplates.colorful()
-        lineChartDataSet.colors                 = [UIColor.red]
-        lineChartDataSet.circleColors           = [UIColor.green]
-        lineChartDataSet.circleRadius           = 2.0
-//        lineChartDataSet.drawCirclesEnabled     = false
-        lineChartDataSet.lineWidth              = 1.0
+        lineChartDataSet.colors                 = [UIColor.appGreen()]
+        lineChartDataSet.circleColors           = [UIColor.black]
+        lineChartDataSet.circleRadius           = 3.0
+        lineChartDataSet.lineWidth              = 2.0
         lineChartDataSet.valueFont              = UIFont.systemFont(ofSize: 8.0)
+        
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
         lineChartView.chartDescription?.text = ""
-//        lineChartView.chartDescription?.font = UIFont.systemFont(ofSize: 12)
     }
     
     func setChartEth(dataPoints: [String], values: [Double]) {
@@ -70,19 +68,15 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         }
         
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "ETH/USD")
-        //         lineChartDataSet.colors = ChartColorTemplates.colorful()
-        lineChartDataSet.colors                 = [UIColor.green]
-        lineChartDataSet.circleColors           = [UIColor.red]
-        lineChartDataSet.circleRadius           = 2.0
-        //        lineChartDataSet.drawCirclesEnabled     = false
-        lineChartDataSet.lineWidth              = 1.0
+        lineChartDataSet.colors                 = [UIColor.appGreen()]
+        lineChartDataSet.circleColors           = [UIColor.black]
+        lineChartDataSet.circleRadius           = 3.0
+        lineChartDataSet.lineWidth              = 2.0
         lineChartDataSet.valueFont              = UIFont.systemFont(ofSize: 8.0)
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
         lineChartView.chartDescription?.text = ""
-//        lineChartView.chartDescription?.font = UIFont.systemFont(ofSize: 12)
-        
     }
     
 //    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -98,10 +92,4 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
 //    public func stringForValue(value: Double, axis: AxisBase?) -> String {
 //        return priceStatsTimeStampArray[Int(value)]
 //    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 }

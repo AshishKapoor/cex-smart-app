@@ -17,6 +17,11 @@ extension UIColor {
     class func barGraphBackColor() -> UIColor {
         return UIColor(red: 189/255, green: 195/255, blue: 199/255, alpha: 1)
     }
+    
+    class func appGreen() -> UIColor {
+        return UIColor(red: 0.31, green: 0.74, blue: 0.57, alpha: 1)
+    }
+    
 }
 
 extension Date {

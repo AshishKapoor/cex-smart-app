@@ -19,27 +19,38 @@ class CXLastPrices: NSObject {
     
     init(priceStatsData: JSONDictionary) {
         super.init()
-        guard let parsedLastPrice = priceStatsData["lprice"] as? String else {return}
+        guard let parsedLastPrice   = priceStatsData["lprice"] as? String else {return}
         self._lprice    = parsedLastPrice
-        guard let parsedSymbol1 = priceStatsData["symbol1"] as? String else {return}
+        guard let parsedSymbol1     = priceStatsData["symbol1"] as? String else {return}
         self._symbol1   = parsedSymbol1
-        guard let parsedSymbol2 = priceStatsData["symbol2"] as? String else {return}
+        guard let parsedSymbol2     = priceStatsData["symbol2"] as? String else {return}
         self._symbol2   = parsedSymbol2
     }
     
-    var getLastPrice: String {
-        guard let lprice = self._lprice else { return "" }
-        return lprice
+    var lastPrice: String {
+        set ( newValue ) {
+            self._lprice = newValue
+        } get {
+            guard let lprice = self._lprice else { return "" }
+            return lprice
+        }
     }
     
-    var getSymbol1: String {
-        guard let symbol1 = self._symbol1 else { return "" }
-        return symbol1
+    var symbol1: String {
+        set ( newValue ) {
+            self._lprice = newValue
+        } get {
+            guard let symbol1 = self._symbol1 else { return "" }
+            return symbol1
+        }
     }
     
-    var getSymbol2: String {
-        guard let symbol2 = self._symbol2 else { return "" }
-        return symbol2
+    var symbol2: String {
+        set ( newValue ) {
+            self._lprice = newValue
+        } get {
+            guard let symbol2 = self._symbol2 else { return "" }
+            return symbol2
+        }
     }
-    
 }

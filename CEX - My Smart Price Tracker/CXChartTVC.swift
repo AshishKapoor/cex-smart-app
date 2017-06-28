@@ -25,6 +25,11 @@ class CXChartTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Charts"
+        
+        view.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.white
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.tableFooterView = UIView()
     }
 
@@ -137,6 +142,10 @@ class CXChartTVC: UITableViewController {
         task.resume()
     }
 
+    deinit {
+        tableView = nil
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -159,11 +168,25 @@ class CXChartTVC: UITableViewController {
         
         if indexPath.row == 0 {
             cell.currencyLabel.text = priceCurrency.first
+            cell.currencyLabel.textColor = UIColor.appGreen()
+            if #available(iOS 8.2, *) {
+                cell.currencyLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightBold)
+            } else {
+                // Fallback on earlier versions
+                cell.currencyLabel.font = UIFont.systemFont(ofSize: 30)
+            }
             cell.setChartBtc(dataPoints: self.priceStatsTimeStampArrayForBtc, values: self.priceStatsPriceArrayForBtc)
             cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArrayForBtc)
             
         } else {
             cell.currencyLabel.text = priceCurrency.last
+            cell.currencyLabel.textColor = UIColor.appGreen()
+            if #available(iOS 8.2, *) {
+                cell.currencyLabel.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightBold)
+            } else {
+                // Fallback on earlier versions
+                cell.currencyLabel.font = UIFont.systemFont(ofSize: 30)
+            }
             cell.setChartEth(dataPoints: self.priceStatsTimeStampArrayForEth, values: self.priceStatsPriceArrayForEth)
             cell.addXValuesToBarChartView(time: self.priceStatsTimeStampArrayForEth)
             

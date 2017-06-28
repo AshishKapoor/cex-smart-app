@@ -11,25 +11,15 @@ import UIKit
 class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    var lastPrices      = CXLastPrices()
-    
-    var lastPriceArray  = [String]()
-    var symbol1Array    = [String]()
-    var symbol2Array    = [String]()
-    
+    var lastPrices      = [CXLastPrices]()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Price Currency"
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        loadData()
+        view.backgroundColor            = UIColor.black
+        setupTableView()
+        refreshData(sender: refreshControl)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -37,8 +27,45 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         clearOldData()
     }
     
-    func clearOldData() -> Void {
+    func setupTableView() -> Void {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor       = UIColor.black
         
+        tableView.separatorStyle        = UITableViewCellSeparatorStyle.none
+        
+        tableView.rowHeight             = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight    = 44.0
+        
+        tableView.tableFooterView       = UIView()
+        
+        if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.white
+            tableView.refreshControl = refreshControl
+        } else {
+            refreshControl.tintColor = UIColor.white
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(CXPriceCurrencyVC.refreshData(sender:)), for: .valueChanged)
+        let attributes = [ NSForegroundColorAttributeName : UIColor.white ] as [String: Any]
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Data ...", attributes: attributes)
+    }
+    
+    func clearOldData() {
+        print(self.lastPrices.description)
+        self.lastPrices.removeAll()
+    }
+    
+    func refreshData(sender: UIRefreshControl) {
+        if self.lastPrices.count > 0 {
+            clearOldData()
+            tableView.reloadData()
+        }
+        loadData()
+    }
+    
+    deinit {
+        tableView = nil
     }
     
     func loadData () {
@@ -53,39 +80,47 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
                     if key == "data" {
                         guard let valueJSONArray = value as? JSONArray else {return}
                         for pairs in valueJSONArray {
-                            self.lastPrices = (CXLastPrices(priceStatsData: pairs as! JSONDictionary))
-                            print(self.lastPrices.getLastPrice)
-                            self.lastPriceArray.append(self.lastPrices.getLastPrice)
-                            self.symbol1Array.append(self.lastPrices.getSymbol1)
-                            self.symbol2Array.append(self.lastPrices.getSymbol2)
+                            self.lastPrices.append(CXLastPrices(priceStatsData: pairs as! JSONDictionary))
                         }
                     }
                 }
-                
                 DispatchQueue.global(qos: .background).async {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
                     }
                 }
-            } catch {
-                print("should ideally throw an error")
-            }
+            } catch {}
         }
         task.resume()
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.lastPriceArray.count
+        return self.lastPrices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = lastPriceArray[indexPath.row]
-//        cell.detailTextLabel?.text = self.lastPrices?.getLastPrice[indexPath.row]
+        
+        let priceData = lastPrices[indexPath.row]
+        
+        cell.backgroundColor = UIColor.black
+        cell.textLabel?.text = priceData.lastPrice
+        
+        if #available(iOS 8.2, *) {
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightBold)
+        } else {
+            // Fallback on earlier versions
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
+        }
+        cell.textLabel?.tintColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.white
+        
+        cell.detailTextLabel?.text = "\(priceData.symbol1) - \(priceData.symbol2)"
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.detailTextLabel?.tintColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
         
         return cell
     }

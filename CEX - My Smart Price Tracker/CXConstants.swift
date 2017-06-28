@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public typealias JSON = Any
 public typealias JSONDictionary = Dictionary<String, Any>
@@ -17,12 +18,6 @@ public enum timeSpan {
     case aWeek
     case aMonth
 }
-
-//var timeSpanValue: [(timeSpan, Int)] = [
-//    (.oneDay, 24),
-//    (.oneWeek, 168),
-//    (.oneMonth, 720)
-//]
 
 func timeStampValue(timePeriod: timeSpan) -> Int {
     switch timePeriod {
@@ -66,3 +61,5 @@ let priceStatsBtcURL = "\(cexURL)\(priceStats)/\(convertBtcToUSD)/"
 
 let currencyLimitsURL = "\(cexURL)\(currencyLimits)"
 let lastPricesURL = "\(cexURL)\(lastPrices)"
+
+let appGreenColor = UIColor(colorLiteralRed: 0.31, green: 0.74, blue: 0.57, alpha: 1)
