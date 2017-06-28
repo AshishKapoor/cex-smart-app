@@ -50,7 +50,7 @@ let cexURL = "https://cex.io/api/"
 let lastPrices = "last_prices/BTC/ETH/USD/EUR"
 
 let priceStats = "price_stats"
-let currencyLimits = "currency_limits"
+let tradeHistory = "trade_history/ETH/USD/?since=0"
 
 
 let convertEthToUSD = "\(cryptocurrency.ETH.rawValue)/\(currency.USD.rawValue)"
@@ -59,7 +59,7 @@ let priceStatsEthURL = "\(cexURL)\(priceStats)/\(convertEthToUSD)/"
 let convertBtcToUSD = "\(cryptocurrency.BTC.rawValue)/\(currency.USD.rawValue)"
 let priceStatsBtcURL = "\(cexURL)\(priceStats)/\(convertBtcToUSD)/"
 
-let currencyLimitsURL = "\(cexURL)\(currencyLimits)"
+let tradeHistoryURL = "\(cexURL)\(tradeHistory)"
 let lastPricesURL = "\(cexURL)\(lastPrices)"
 
 let appGreenColor = UIColor(colorLiteralRed: 0.31, green: 0.74, blue: 0.57, alpha: 1)

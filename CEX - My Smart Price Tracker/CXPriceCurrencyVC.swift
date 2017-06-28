@@ -52,7 +52,7 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         refreshControl.addTarget(self, action: #selector(CXPriceCurrencyVC.refreshData(sender:)), for: .valueChanged)
         let attributes = [ NSForegroundColorAttributeName : UIColor.white ] as [String: Any]
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Data ...", attributes: attributes)
+        refreshControl.attributedTitle = NSAttributedString(string: "Updating ...", attributes: attributes)
     }
     
     func clearOldData() {
@@ -114,11 +114,10 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
         }
         cell.textLabel?.tintColor = UIColor.white
-        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.appGreen()
         
         cell.detailTextLabel?.text = "\(priceData.symbol1) - \(priceData.symbol2)"
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
-        cell.detailTextLabel?.tintColor = UIColor.white
         cell.detailTextLabel?.textColor = UIColor.white
         
         return cell

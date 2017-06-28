@@ -11,31 +11,46 @@ import UIKit
 class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title                   = "Trade History"
-        
-        tableView.dataSource    = self
-        tableView.delegate      = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        view.backgroundColor            = UIColor.black
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        tableView.tableFooterView = UIView()
+        setupTableView()
         
         loadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor       = UIColor.black
+        tableView.separatorStyle        = UITableViewCellSeparatorStyle.none
+        tableView.rowHeight             = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight    = 44.0
+        tableView.tableFooterView       = UIView()
+        
+        if #available(iOS 10.0, *) {
+            refreshControl.tintColor = UIColor.white
+            tableView.refreshControl = refreshControl
+        } else {
+            refreshControl.tintColor = UIColor.white
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(CXTradeCurrencyVC.refreshData(sender:)), for: .valueChanged)
+        let attributes = [ NSForegroundColorAttributeName : UIColor.white ] as [String: Any]
+        refreshControl.attributedTitle = NSAttributedString(string: "Updating ...", attributes: attributes)
     }
     
+    func refreshData(sender: UIRefreshControl) -> Void {
+        print("Haan bhenchod")
+    }
+    
+    
     func loadData () {
-        let url:URL = URL(string: currencyLimitsURL)!
+        let url:URL = URL(string: tradeHistoryURL)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 //        let postString = "lastHours=7&maxRespArrSize=100"
@@ -47,13 +62,16 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
-                guard let responseArray = json as? JSONArray else {return}
-                for responsePriceStats in responseArray {
-                    print(responsePriceStats)
-                    guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
-                    print(safePriceStats)
-                    
-                    self.tableView.reloadData()
+                for value in json as! JSONArray {
+                    for (_, val) in value as! JSONDictionary {
+                        print(val)
+                    }
+                }
+                
+                DispatchQueue.global(qos: .background).async {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             } catch {
                 print("should ideally throw an error")
@@ -63,12 +81,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     // MARK: - Table view data source
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 2
@@ -77,9 +90,13 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.backgroundColor            = UIColor.black
+        cell.textLabel?.text            = "BTC"
+        cell.textLabel?.textColor       = UIColor.appGreen()
         
-        cell.textLabel?.text = "BTC"
-        cell.detailTextLabel?.text = "$5000"
+        
+        cell.detailTextLabel?.textColor = UIColor.appGreen()
+        cell.detailTextLabel?.text      = "$5000"
         
         return cell
     }
