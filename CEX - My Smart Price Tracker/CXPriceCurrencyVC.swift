@@ -118,7 +118,15 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         
         cell.detailTextLabel?.text = "\(priceData.symbol1) - \(priceData.symbol2)"
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
-        cell.detailTextLabel?.textColor = UIColor.white
+        
+        if priceData.symbol2 == "USD" {
+            cell.detailTextLabel?.textColor = UIColor(colorLiteralRed: 0, green: 150, blue: 100, alpha: 0.6)
+        } else if priceData.symbol2 == "EUR" {
+            cell.detailTextLabel?.textColor = UIColor(colorLiteralRed: 150, green: 100, blue: 0, alpha: 0.6)
+        } else {
+            cell.detailTextLabel?.textColor = UIColor.lightGray
+        }
+        
         
         return cell
     }

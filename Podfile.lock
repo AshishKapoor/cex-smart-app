@@ -2,13 +2,16 @@ PODS:
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
+  - Google-Mobile-Ads-SDK (7.20.0)
 
 DEPENDENCIES:
   - Charts
+  - Google-Mobile-Ads-SDK
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  Google-Mobile-Ads-SDK: 168312cdc167fa22746d4ea8e839fc4825dd2966
 
-PODFILE CHECKSUM: 48a468f46469a299d2b6076dede01f542f85bc47
+PODFILE CHECKSUM: 268f15c507597f899cfa0d891a1c6909b2805c29
 
 COCOAPODS: 1.2.1

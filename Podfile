@@ -7,5 +7,5 @@ target 'CEX - My Smart Price Tracker' do
 
   # Pods for CEX - My Smart Price Tracker
   pod 'Charts'
-  
+  pod 'Google-Mobile-Ads-SDK'
 end

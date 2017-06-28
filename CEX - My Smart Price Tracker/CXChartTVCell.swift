@@ -54,6 +54,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
         lineChartView.chartDescription?.text = ""
+        lineChartView.isUserInteractionEnabled = false
     }
     
     func setChartEth(dataPoints: [String], values: [Double]) {
@@ -77,6 +78,7 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
         lineChartView.chartDescription?.text = ""
+        lineChartView.isUserInteractionEnabled = false
     }
     
 //    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {

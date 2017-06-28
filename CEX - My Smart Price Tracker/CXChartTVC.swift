@@ -73,6 +73,7 @@ class CXChartTVC: UITableViewController {
         
         self.priceStatsPriceArrayForBtc.removeAll()
         self.priceStatsTimeStampArrayForBtc.removeAll()
+        
         tableView.reloadData()
     }
     
