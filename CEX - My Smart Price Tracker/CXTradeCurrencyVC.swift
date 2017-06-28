@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     var tradeHistory = [CXTradeHistory]()
@@ -18,13 +21,22 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         title                           = "Trade History - ETH/USD"
         view.backgroundColor            = UIColor.black
-
         setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.refreshData(sender: refreshControl)
+        setupAdMob()
+    }
+    
+    func setupAdMob() {
+//        let request = GADRequest()
+//        request.testDevices = [kGADSimulatorID]
+        
+        bannerView.adUnitID = "ca-app-pub-1816315233369355/9965504421"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     func setupTableView() {

@@ -7,20 +7,36 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
     var lastPrices      = [CXLastPrices]()
     private let refreshControl = UIRefreshControl()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Price Currency"
         view.backgroundColor            = UIColor.black
         setupTableView()
+
+        setupAdMob()
     }
  
+    
+    func setupAdMob() {
+//        let request = GADRequest()
+//        request.testDevices = [kGADSimulatorID]
+        
+        bannerView.adUnitID = "ca-app-pub-1816315233369355/9965504421"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         refreshData(sender: refreshControl)

@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0219155347F1B378241E8344 /* Pods_CEX___My_Smart_Price_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */; };
+		890687DF1F03C29B0004DEF2 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687DE1F03C29B0004DEF2 /* AdSupport.framework */; };
+		890687E11F03C2A20004DEF2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687E01F03C2A20004DEF2 /* AudioToolbox.framework */; };
+		890687E31F03C2A90004DEF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687E21F03C2A90004DEF2 /* AVFoundation.framework */; };
+		890687E51F03C2B20004DEF2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687E41F03C2B20004DEF2 /* CoreGraphics.framework */; };
+		890687E71F03C2B90004DEF2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687E61F03C2B90004DEF2 /* CoreMedia.framework */; };
+		890687E91F03C2C10004DEF2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687E81F03C2C10004DEF2 /* CoreTelephony.framework */; };
+		890687EB1F03C2C80004DEF2 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687EA1F03C2C80004DEF2 /* EventKit.framework */; };
+		890687ED1F03C2CE0004DEF2 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687EC1F03C2CE0004DEF2 /* EventKitUI.framework */; };
+		890687EF1F03C2D70004DEF2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687EE1F03C2D70004DEF2 /* MediaPlayer.framework */; };
+		890687F11F03C2DC0004DEF2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687F01F03C2DC0004DEF2 /* StoreKit.framework */; };
+		890687F31F03C2E30004DEF2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 890687F21F03C2E30004DEF2 /* SystemConfiguration.framework */; };
+		890687F51F03C4460004DEF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 890687F41F03C4460004DEF2 /* GoogleService-Info.plist */; };
 		8918E31A1EFEAFF60019AF42 /* CXTradeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8918E3191EFEAFF60019AF42 /* CXTradeHistory.swift */; };
 		895D6C7A1F02599100B1E281 /* CXLastPrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895D6C791F02599100B1E281 /* CXLastPrices.swift */; };
 		89639B991EFD074600DB0A15 /* CXChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89639B981EFD074600DB0A15 /* CXChart.swift */; };
@@ -25,6 +37,18 @@
 
 /* Begin PBXFileReference section */
 		742B3EDE478A24F9D868B0A0 /* Pods-CEX - My Smart Price Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEX - My Smart Price Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CEX - My Smart Price Tracker/Pods-CEX - My Smart Price Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		890687DE1F03C29B0004DEF2 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		890687E01F03C2A20004DEF2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		890687E21F03C2A90004DEF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		890687E41F03C2B20004DEF2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		890687E61F03C2B90004DEF2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		890687E81F03C2C10004DEF2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		890687EA1F03C2C80004DEF2 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		890687EC1F03C2CE0004DEF2 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		890687EE1F03C2D70004DEF2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		890687F01F03C2DC0004DEF2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		890687F21F03C2E30004DEF2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		890687F41F03C4460004DEF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8918E3191EFEAFF60019AF42 /* CXTradeHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTradeHistory.swift; sourceTree = "<group>"; };
 		895D6C791F02599100B1E281 /* CXLastPrices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXLastPrices.swift; sourceTree = "<group>"; };
 		89639B981EFD074600DB0A15 /* CXChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChart.swift; sourceTree = "<group>"; };
@@ -49,6 +73,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				890687F31F03C2E30004DEF2 /* SystemConfiguration.framework in Frameworks */,
+				890687F11F03C2DC0004DEF2 /* StoreKit.framework in Frameworks */,
+				890687EF1F03C2D70004DEF2 /* MediaPlayer.framework in Frameworks */,
+				890687ED1F03C2CE0004DEF2 /* EventKitUI.framework in Frameworks */,
+				890687EB1F03C2C80004DEF2 /* EventKit.framework in Frameworks */,
+				890687E91F03C2C10004DEF2 /* CoreTelephony.framework in Frameworks */,
+				890687E71F03C2B90004DEF2 /* CoreMedia.framework in Frameworks */,
+				890687E51F03C2B20004DEF2 /* CoreGraphics.framework in Frameworks */,
+				890687E31F03C2A90004DEF2 /* AVFoundation.framework in Frameworks */,
+				890687E11F03C2A20004DEF2 /* AudioToolbox.framework in Frameworks */,
+				890687DF1F03C29B0004DEF2 /* AdSupport.framework in Frameworks */,
 				0219155347F1B378241E8344 /* Pods_CEX___My_Smart_Price_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +94,17 @@
 		1EDFBFB4D65485842E2F4215 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				890687F21F03C2E30004DEF2 /* SystemConfiguration.framework */,
+				890687F01F03C2DC0004DEF2 /* StoreKit.framework */,
+				890687EE1F03C2D70004DEF2 /* MediaPlayer.framework */,
+				890687EC1F03C2CE0004DEF2 /* EventKitUI.framework */,
+				890687EA1F03C2C80004DEF2 /* EventKit.framework */,
+				890687E81F03C2C10004DEF2 /* CoreTelephony.framework */,
+				890687E61F03C2B90004DEF2 /* CoreMedia.framework */,
+				890687E41F03C2B20004DEF2 /* CoreGraphics.framework */,
+				890687E21F03C2A90004DEF2 /* AVFoundation.framework */,
+				890687E01F03C2A20004DEF2 /* AudioToolbox.framework */,
+				890687DE1F03C29B0004DEF2 /* AdSupport.framework */,
 				B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */,
 			);
 			name = Frameworks;
@@ -104,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				8977AF671EFCD0FC00F7874E /* AppDelegate.swift */,
+				890687F41F03C4460004DEF2 /* GoogleService-Info.plist */,
 				89639B9A1EFD1E3900DB0A15 /* Helper */,
 				8977AF721EFCD0FC00F7874E /* LaunchScreen.storyboard */,
 				8977AF6D1EFCD0FC00F7874E /* Main.storyboard */,
@@ -208,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8977AF741EFCD0FC00F7874E /* LaunchScreen.storyboard in Resources */,
+				890687F51F03C4460004DEF2 /* GoogleService-Info.plist in Resources */,
 				8977AF711EFCD0FC00F7874E /* Assets.xcassets in Resources */,
 				8977AF6F1EFCD0FC00F7874E /* Main.storyboard in Resources */,
 			);
@@ -407,7 +455,7 @@
 				INFOPLIST_FILE = "CEX - My Smart Price Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.ashishkapoor.CEX---My-Smart-Price-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.kapoor.CEX---My-Smart-Price-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -422,7 +470,7 @@
 				INFOPLIST_FILE = "CEX - My Smart Price Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.ashishkapoor.CEX---My-Smart-Price-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "tech.kapoor.CEX---My-Smart-Price-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
