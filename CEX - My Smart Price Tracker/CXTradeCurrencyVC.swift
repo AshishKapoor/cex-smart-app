@@ -108,11 +108,11 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
             // Fallback on earlier versions
             cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
         }
-        cell.detailTextLabel?.text      = data.type?.capitalized
+        cell.detailTextLabel?.text      = ("\(data.type?.capitalized ?? "") at price: \(data.price ?? "")")
         if data.type?.capitalized == "Buy" {
-            cell.detailTextLabel?.textColor = UIColor.lightGray
+            cell.detailTextLabel?.textColor = UIColor(colorLiteralRed: 150, green: 0, blue: 0, alpha: 0.6)
         } else {
-            cell.detailTextLabel?.textColor = UIColor.green
+            cell.detailTextLabel?.textColor = UIColor(colorLiteralRed: 0, green: 150, blue: 0, alpha: 0.6)
         }
         cell.detailTextLabel?.font      = UIFont.boldSystemFont(ofSize: 15)
         
