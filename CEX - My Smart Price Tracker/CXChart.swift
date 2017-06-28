@@ -13,13 +13,13 @@ class CXChart: NSObject {
     private var _timeStamp: Date?
     private var _price: String?
     
-    init(priceStatsData: JSONDictionary) {
+    init(json: JSONDictionary) {
         super.init()
         
-        guard let parsedPrice = priceStatsData["price"] as? String else {return}
+        guard let parsedPrice = json["price"] as? String else {return}
         self._price     = parsedPrice
         
-        guard let parsedTimeStamp = priceStatsData["tmsp"] as? TimeInterval else {return}
+        guard let parsedTimeStamp = json["tmsp"] as? TimeInterval else {return}
         let date = Date(timeIntervalSince1970: parsedTimeStamp)
         self._timeStamp = date
     }

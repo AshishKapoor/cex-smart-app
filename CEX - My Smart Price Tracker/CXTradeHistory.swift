@@ -8,30 +8,31 @@
 
 import Foundation
 
-struct CXTradeHistory {
-    let type: String
-}
+class CXTradeHistory: NSObject {
+    var type: String?
+//    var date: Date?
+    var amount: String?
+    var price: String?
+    var tId: String?
 
-//struct Day {
-//    
-//    let date: Date
-//    let min: Double
-//    let max: Double
-//    
-//}
-//
-//extension Day: JSONDecodable {
-//    
-//    public init?(JSON: Any) {
-//        guard let JSON = JSON as? [String: AnyObject] else { return nil }
-//        
-//        guard let time = JSON["time"] as? Double else { return nil }
-//        guard let min = JSON["temperatureMin"] as? Double else { return nil }
-//        guard let max = JSON["temperatureMax"] as? Double else { return nil }
-//        
-//        self.min = min
-//        self.max = max
-//        self.date = Date(timeIntervalSince1970: time)
-//    }
-//    
-//}
+    init(json: JSONDictionary) {
+        super.init()
+        
+        guard let type      = json["type"] as? String else { return }
+        self.type   = type
+        
+        guard let price     = json["price"] as? String else { return }
+        self.price  = price
+        
+        guard let amount    = json["amount"] as? String else { return }
+        self.amount = amount
+        
+        guard let tId       = json["tId"] as? String else { return }
+        self.tId    = tId
+        
+//        guard let date      = json["date"] as? Date else { return }
+//        self.date   = date
+        
+    }
+    
+}

@@ -97,7 +97,7 @@ class CXChartTVC: UITableViewController {
                     guard let responseArray = json as? JSONArray else {return}
                     for responsePriceStats in responseArray {
                         guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
-                        self.priceStats = (CXChart(priceStatsData: safePriceStats))
+                        self.priceStats = (CXChart(json: safePriceStats))
                         self.priceStatsPriceArrayForEth.append(self.priceStats?.getPriceValue ?? 0.0)
                         self.priceStatsTimeStampArrayForEth.append(self.priceStats?.getTimeStampValue ?? "")
                         DispatchQueue.global(qos: .background).async {
@@ -128,7 +128,7 @@ class CXChartTVC: UITableViewController {
                     guard let responseArray = json as? JSONArray else {return}
                     for responsePriceStats in responseArray {
                         guard let safePriceStats = responsePriceStats as? JSONDictionary else {return}
-                        self.priceStats = (CXChart(priceStatsData: safePriceStats))
+                        self.priceStats = (CXChart(json: safePriceStats))
                         self.priceStatsPriceArrayForBtc.append(self.priceStats?.getPriceValue ?? 0.0)
                         self.priceStatsTimeStampArrayForBtc.append(self.priceStats?.getTimeStampValue ?? "")
                         DispatchQueue.global(qos: .background).async {

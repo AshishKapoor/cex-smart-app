@@ -12,15 +12,19 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
+    var tradeHistory = [CXTradeHistory]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title                   = "Trade History"
+        title                           = "Trade History - ETH/USD"
         view.backgroundColor            = UIColor.black
 
         setupTableView()
-        
-        loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.refreshData(sender: refreshControl)
     }
     
     func setupTableView() {
@@ -29,7 +33,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.backgroundColor       = UIColor.black
         tableView.separatorStyle        = UITableViewCellSeparatorStyle.none
         tableView.rowHeight             = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight    = 44.0
+        tableView.estimatedRowHeight    = 50.0
         tableView.tableFooterView       = UIView()
         
         if #available(iOS 10.0, *) {
@@ -45,16 +49,21 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func refreshData(sender: UIRefreshControl) -> Void {
-        print("Haan bhenchod")
+        if tradeHistory.count > 0 {
+            clearData()
+        }
+        loadData()
     }
     
+    func clearData() {
+        tradeHistory.removeAll()
+        tableView.reloadData()
+    }
     
     func loadData () {
         let url:URL = URL(string: tradeHistoryURL)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-//        let postString = "lastHours=7&maxRespArrSize=100"
-//        request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(String(describing: error))")
@@ -63,19 +72,15 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
                 for value in json as! JSONArray {
-                    for (_, val) in value as! JSONDictionary {
-                        print(val)
-                    }
+                    self.tradeHistory.append(CXTradeHistory(json: value as! JSONDictionary))
                 }
-                
                 DispatchQueue.global(qos: .background).async {
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
                     }
                 }
-            } catch {
-                print("should ideally throw an error")
-            }
+            } catch {}
         }
         task.resume()
     }
@@ -84,19 +89,32 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return self.tradeHistory.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let data = self.tradeHistory[indexPath.row]
+        
         cell.backgroundColor            = UIColor.black
-        cell.textLabel?.text            = "BTC"
+        
+        cell.textLabel?.text            = data.amount
         cell.textLabel?.textColor       = UIColor.appGreen()
-        
-        
-        cell.detailTextLabel?.textColor = UIColor.appGreen()
-        cell.detailTextLabel?.text      = "$5000"
+        if #available(iOS 8.2, *) {
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightBold)
+        } else {
+            // Fallback on earlier versions
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 30)
+        }
+        cell.detailTextLabel?.text      = data.type?.capitalized
+        if data.type?.capitalized == "Buy" {
+            cell.detailTextLabel?.textColor = UIColor.lightGray
+        } else {
+            cell.detailTextLabel?.textColor = UIColor.green
+        }
+        cell.detailTextLabel?.font      = UIFont.boldSystemFont(ofSize: 15)
         
         return cell
     }

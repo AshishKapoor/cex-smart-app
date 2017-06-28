@@ -39,7 +39,7 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.separatorStyle        = UITableViewCellSeparatorStyle.none
         
         tableView.rowHeight             = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight    = 44.0
+        tableView.estimatedRowHeight    = 50.0
         
         tableView.tableFooterView       = UIView()
         
@@ -79,7 +79,7 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
                     if key == "data" {
                         guard let valueJSONArray = value as? JSONArray else {return}
                         for pairs in valueJSONArray {
-                            self.lastPrices.append(CXLastPrices(priceStatsData: pairs as! JSONDictionary))
+                            self.lastPrices.append(CXLastPrices(json: pairs as! JSONDictionary))
                         }
                     }
                 }

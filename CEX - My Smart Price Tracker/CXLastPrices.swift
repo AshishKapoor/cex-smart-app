@@ -17,13 +17,13 @@ class CXLastPrices: NSObject {
     override init() {
     }
     
-    init(priceStatsData: JSONDictionary) {
+    init(json: JSONDictionary) {
         super.init()
-        guard let parsedLastPrice   = priceStatsData["lprice"] as? String else {return}
+        guard let parsedLastPrice   = json["lprice"] as? String else {return}
         self._lprice    = parsedLastPrice
-        guard let parsedSymbol1     = priceStatsData["symbol1"] as? String else {return}
+        guard let parsedSymbol1     = json["symbol1"] as? String else {return}
         self._symbol1   = parsedSymbol1
-        guard let parsedSymbol2     = priceStatsData["symbol2"] as? String else {return}
+        guard let parsedSymbol2     = json["symbol2"] as? String else {return}
         self._symbol2   = parsedSymbol2
     }
     
