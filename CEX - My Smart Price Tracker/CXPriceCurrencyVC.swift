@@ -19,6 +19,10 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         title = "Price Currency"
         view.backgroundColor            = UIColor.black
         setupTableView()
+    }
+ 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         refreshData(sender: refreshControl)
     }
     
@@ -52,22 +56,17 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func clearOldData() {
-        print(self.lastPrices.description)
         self.lastPrices.removeAll()
+        tableView.reloadData()
     }
     
     func refreshData(sender: UIRefreshControl) {
         if self.lastPrices.count > 0 {
             clearOldData()
-            tableView.reloadData()
         }
         loadData()
     }
-    
-    deinit {
-        tableView = nil
-    }
-    
+        
     func loadData () {
         let url:URL = URL(string: lastPricesURL)!
         var request = URLRequest(url: url)

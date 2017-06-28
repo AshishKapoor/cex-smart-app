@@ -73,6 +73,7 @@ class CXChartTVC: UITableViewController {
         
         self.priceStatsPriceArrayForBtc.removeAll()
         self.priceStatsTimeStampArrayForBtc.removeAll()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -140,10 +141,6 @@ class CXChartTVC: UITableViewController {
             } catch {}
         }
         task.resume()
-    }
-
-    deinit {
-        tableView = nil
     }
     
     override func didReceiveMemoryWarning() {
