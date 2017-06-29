@@ -16,6 +16,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     var tradeHistory = [CXTradeHistory]()
+    var timer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +24,26 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         view.backgroundColor            = UIColor.black
         setupTableView()
         setupAdMob()
+        
+        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         self.refreshData(sender: refreshControl)
     }
     
+    func runTimedCode() {
+        refreshData(sender: refreshControl)
+    }
+    
+    deinit {
+        timer.invalidate()
+    }
+    
     func setupAdMob() {
-//        let request = GADRequest()
-//        request.testDevices = [kGADSimulatorID]
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
         
         bannerView.adUnitID = "ca-app-pub-1816315233369355/9965504421"
         bannerView.rootViewController = self
@@ -61,7 +71,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         refreshControl.attributedTitle = NSAttributedString(string: "Updating ...", attributes: attributes)
     }
     
-    func refreshData(sender: UIRefreshControl) -> Void {
+    func refreshData(sender: UIRefreshControl) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         if tradeHistory.count > 0 {
             clearData()

@@ -12,7 +12,8 @@ import GoogleMobileAds
 class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var lastPrices      = [CXLastPrices]()
     private let refreshControl = UIRefreshControl()
-    
+    var timer: Timer!
+
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var bannerView: GADBannerView!
@@ -25,12 +26,20 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         setupTableView()
 
         setupAdMob()
+        
+        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
- 
+    func runTimedCode() -> Void {
+        refreshData(sender: refreshControl)
+    }
+    
+    deinit {
+        timer.invalidate()
+    }
     
     func setupAdMob() {
-//        let request = GADRequest()
-//        request.testDevices = [kGADSimulatorID]
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
         
         bannerView.adUnitID = "ca-app-pub-1816315233369355/9965504421"
         bannerView.rootViewController = self
@@ -39,7 +48,6 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         refreshData(sender: refreshControl)
     }
     

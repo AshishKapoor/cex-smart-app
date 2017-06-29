@@ -34,8 +34,9 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
     
     func setChartBtc(dataPoints: [String], values: [Double]) {
         lineChartView.noDataText        = "You need to provide data for the chart."
-        lineChartView.noDataTextColor   = UIColor.black
-        
+        lineChartView.noDataTextColor   = UIColor.white
+        lineChartView.noDataFont        = UIFont.boldSystemFont(ofSize: 0.0)
+
         var dataEntries: [BarChartDataEntry] = []
         
         for points in 0..<dataPoints.count {
@@ -46,20 +47,24 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "BTC/USD")
         lineChartDataSet.colors                 = [UIColor.appGreen()]
         lineChartDataSet.circleColors           = [UIColor.black]
-        lineChartDataSet.circleRadius           = 3.0
+        lineChartDataSet.circleRadius           = 6.0
         lineChartDataSet.lineWidth              = 2.0
         lineChartDataSet.valueFont              = UIFont.systemFont(ofSize: 8.0)
+        lineChartDataSet.circleHoleColor        = UIColor.appGreen()
         
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
         lineChartView.chartDescription?.text = ""
         lineChartView.isUserInteractionEnabled = false
+        lineChartView.borderColor = UIColor.appGreen()
+        lineChartView.tintColor = UIColor.appGreen()
     }
     
     func setChartEth(dataPoints: [String], values: [Double]) {
         lineChartView.noDataText        = "You need to provide data for the chart."
-        lineChartView.noDataTextColor   = UIColor.black
+        lineChartView.noDataTextColor   = UIColor.white
+        lineChartView.noDataFont        = UIFont.boldSystemFont(ofSize: 0.0)
         
         var dataEntries: [BarChartDataEntry] = []
         
@@ -71,9 +76,11 @@ class CXChartTVCell: UITableViewCell, ChartViewDelegate {
         let lineChartDataSet = LineChartDataSet(values: dataEntries, label: "ETH/USD")
         lineChartDataSet.colors                 = [UIColor.appGreen()]
         lineChartDataSet.circleColors           = [UIColor.black]
-        lineChartDataSet.circleRadius           = 3.0
+        lineChartDataSet.circleRadius           = 6.0
         lineChartDataSet.lineWidth              = 2.0
         lineChartDataSet.valueFont              = UIFont.systemFont(ofSize: 8.0)
+        lineChartDataSet.circleHoleColor        = UIColor.appGreen()
+        
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
         lineChartView.animate(xAxisDuration: 0.25, easingOption: .easeInBack)
