@@ -9,13 +9,15 @@
 import UIKit
 import GoogleMobileAds
 
+let appGroup:String = "group.cex-my-smart-price-tracker.app"
+
 class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var lastPrices      = [CXLastPrices]()
     private let refreshControl = UIRefreshControl()
     var timer: Timer!
+    var data:[String] = []
 
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var bannerView: GADBannerView!
     
     
@@ -38,8 +40,8 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func setupAdMob() {
-        let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
+//        let request = GADRequest()
+//        request.testDevices = [kGADSimulatorID]
         
         bannerView.adUnitID = "ca-app-pub-1816315233369355/9965504421"
         bannerView.rootViewController = self
@@ -48,7 +50,16 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+
         refreshData(sender: refreshControl)
+        save()
+    }
+    
+    func save() {
+        
+//        data = ["The", "Today", "Extension", "Worked!"]
+        UserDefaults(suiteName: appGroup)!.set(data, forKey: "notes")
+        UserDefaults(suiteName: appGroup)!.synchronize()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,7 +145,7 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
         let priceData = lastPrices[indexPath.row]
-        
+        data.append("\(priceData.symbol1) - \(priceData.symbol2): \(priceData.lastPrice)")
         cell.backgroundColor = UIColor.black
         cell.textLabel?.text = priceData.lastPrice
         
