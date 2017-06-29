@@ -239,11 +239,11 @@
             </objects>
             <point key="canvasLocation" x="1197.5999999999999" y="369.26536731634184"/>
         </scene>
-        <!--Trade History - ETH/USD-->
+        <!--Trade History-->
         <scene sceneID="j4x-zt-plC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CKN-p6-WWd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trade History - ETH/USD" image="icons8-order_history" selectedImage="icons8-order_history" id="BEs-Zh-Jyg"/>
+                    <tabBarItem key="tabBarItem" title="Trade History" image="icons8-order_history" selectedImage="icons8-order_history" id="BEs-Zh-Jyg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P2G-WM-UfQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

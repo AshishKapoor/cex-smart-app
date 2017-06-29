@@ -39,6 +39,7 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         refreshData(sender: refreshControl)
     }
     
@@ -77,12 +78,23 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func refreshData(sender: UIRefreshControl) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         if self.lastPrices.count > 0 {
             clearOldData()
         }
         loadData()
     }
-        
+    
+    func updateView() {
+        DispatchQueue.global(qos: .background).async {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     func loadData () {
         let url:URL = URL(string: lastPricesURL)!
         var request = URLRequest(url: url)
@@ -99,12 +111,7 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
                         }
                     }
                 }
-                DispatchQueue.global(qos: .background).async {
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
-                    }
-                }
+                self.updateView()
             } catch {}
         }
         task.resume()

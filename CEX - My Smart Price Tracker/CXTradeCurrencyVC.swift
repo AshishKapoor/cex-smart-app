@@ -19,15 +19,16 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title                           = "Trade History - ETH/USD"
+        title                           = "Trade History"
         view.backgroundColor            = UIColor.black
         setupTableView()
+        setupAdMob()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         self.refreshData(sender: refreshControl)
-        setupAdMob()
     }
     
     func setupAdMob() {
@@ -61,6 +62,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func refreshData(sender: UIRefreshControl) -> Void {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         if tradeHistory.count > 0 {
             clearData()
         }
@@ -70,6 +72,16 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func clearData() {
         tradeHistory.removeAll()
         tableView.reloadData()
+    }
+    
+    func updateView() {
+        DispatchQueue.global(qos: .background).async {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
     }
     
     func loadData () {
@@ -86,12 +98,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
                 for value in json as! JSONArray {
                     self.tradeHistory.append(CXTradeHistory(json: value as! JSONDictionary))
                 }
-                DispatchQueue.global(qos: .background).async {
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
-                    }
-                }
+                self.updateView()
             } catch {}
         }
         task.resume()
@@ -129,6 +136,10 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.detailTextLabel?.font      = UIFont.boldSystemFont(ofSize: 15)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "ETH/USD"
     }
     
 }

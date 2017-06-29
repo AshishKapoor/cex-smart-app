@@ -37,16 +37,19 @@ class CXChartTVC: UITableViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             clearOldData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aDay))
             loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aDay))
             break
         case 1:
             clearOldData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aWeek))
             loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aWeek))
             break
         case 2:
             clearOldData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aMonth))
             loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aMonth))
             break
@@ -61,25 +64,33 @@ class CXChartTVC: UITableViewController {
             clearOldData()
         } else {
             timeSegmentControl.selectedSegmentIndex = 0
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             loadDataForEth(time: timeStampValue(timePeriod: timeSpan.aDay))
             loadDataForBtc(time: timeStampValue(timePeriod: timeSpan.aDay))
         }
     }
     
     func clearOldData() -> Void {
-        
         self.priceStatsPriceArrayForEth.removeAll()
         self.priceStatsTimeStampArrayForEth.removeAll()
         
         self.priceStatsPriceArrayForBtc.removeAll()
         self.priceStatsTimeStampArrayForBtc.removeAll()
-        
-        tableView.reloadData()
+        updateView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         clearOldData()
+    }
+    
+    func updateView() {
+        DispatchQueue.global(qos: .background).async {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
     }
     
     func loadDataForEth(time: Int) {
@@ -101,11 +112,7 @@ class CXChartTVC: UITableViewController {
                         self.priceStats = (CXChart(json: safePriceStats))
                         self.priceStatsPriceArrayForEth.append(self.priceStats?.getPriceValue ?? 0.0)
                         self.priceStatsTimeStampArrayForEth.append(self.priceStats?.getTimeStampValue ?? "")
-                        DispatchQueue.global(qos: .background).async {
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                        }
+                        self.updateView()
                     }
                 }
             } catch {}
