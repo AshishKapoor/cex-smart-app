@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RFAboutView_Swift
 
 class CXChartTVC: UITableViewController {
 
@@ -82,6 +83,36 @@ class CXChartTVC: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         clearOldData()
+    }
+    
+    @IBAction func developerInformationAction(_ sender: UIBarButtonItem) {
+        self.view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        UIApplication.shared.statusBarStyle = .default
+
+        // First create a UINavigationController (or use your existing one).
+        // The RFAboutView needs to be wrapped in a UINavigationController.
+        
+        let aboutNav = UINavigationController()
+        
+        // Initialise the RFAboutView:
+        let aboutView = RFAboutViewController(copyrightHolderName: "Ashish Kapoor", contactEmail: "swiftobjc@gmail.com", contactEmailTitle: "Contact me", websiteURL: NSURL(string: "https://ashishkapoor.github.io")! as URL, websiteURLTitle: "Developer's Website")
+        
+        // Set some additional options:
+        aboutView.headerBackgroundColor = .black
+        aboutView.headerTextColor = .white
+        aboutView.blurStyle = .dark
+//        aboutView.headerBackgroundImage = UIImage(named: "blur.png")
+        aboutView.headerBackgroundColor = UIColor.appGreen()
+        
+        // Add an acknowledgement:
+        aboutView.addAcknowledgement("DMSwipeCards", content: "123")
+        aboutView.addAcknowledgement("RFAboutView", content: "123")
+        
+        // Add the aboutView to the NavigationController:
+        aboutNav.setViewControllers([aboutView], animated: false)
+        
+        // Present the navigation controller:
+        self.present(aboutNav, animated: true, completion: nil)
     }
     
     func updateView() {

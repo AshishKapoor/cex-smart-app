@@ -145,7 +145,10 @@ class CXPriceCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
         let priceData = lastPrices[indexPath.row]
+        
         data.append("\(priceData.symbol1) - \(priceData.symbol2): \(priceData.lastPrice)")
+        
+        
         cell.backgroundColor = UIColor.black
         cell.textLabel?.text = priceData.lastPrice
         
