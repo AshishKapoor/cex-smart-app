@@ -13,6 +13,10 @@ Trade History from CEX.IO 🕶|
 :-------------------------:
 <img src="https://github.com/AshishKapoor/cex-smart-app/blob/master/screenshots/trade_history.PNG" alt="Drawing" width="140" height="280"/>  
 
+Last Price Widget from CEX.IO 🕶|  
+:-------------------------:
+<img src="https://github.com/AshishKapoor/cex-smart-app/blob/master/screenshots/last_price.PNG" alt="Drawing" width="140" height="280"/>  
+
 ## Cocoapods: 
 (Use of OpenSource)
 Charts
