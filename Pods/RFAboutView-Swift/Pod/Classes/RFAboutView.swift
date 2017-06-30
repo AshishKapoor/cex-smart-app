@@ -279,7 +279,7 @@ open class RFAboutViewController: UIViewController,UITableViewDataSource,UITable
             }
             
         }
-        navigationItem.title = NSLocalizedString("About", comment:"UINavigationBar Title")
+        navigationItem.title = NSLocalizedString("Acknowledgements", comment:"UINavigationBar Title")
     }
     
     //MARK:- UITableView Delegate & Data Source
