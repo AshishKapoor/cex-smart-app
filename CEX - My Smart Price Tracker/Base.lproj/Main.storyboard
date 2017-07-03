@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="264"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m6c-Xz-Jbe" id="iXW-jX-5Nh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="263.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ku-hH-BXg" customClass="LineChartView" customModule="Charts">
@@ -193,6 +193,7 @@
                         <segue destination="Hty-G2-Jjt" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="SCQ-ES-Fbs" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="CKN-p6-WWd" kind="relationship" relationship="viewControllers" id="g3u-CW-wgx"/>
+                        <segue destination="n1G-hu-KUW" kind="relationship" relationship="viewControllers" id="xl5-I9-m00"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -203,8 +204,10 @@
         <scene sceneID="ybU-le-aEz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hty-G2-Jjt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Charts" image="icons8-candle_sticks" selectedImage="icons8-candle_sticks" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Charts" image="icons8-candle_sticks" selectedImage="selected-icons8-candle_sticks" id="acW-dT-cKf"/>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nvD-zq-OLH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -226,8 +229,10 @@
         <scene sceneID="hAW-Jz-Jh3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SCQ-ES-Fbs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Price Currency" image="icons8-bitcoin" selectedImage="icons8-bitcoin" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Price Currency" image="icons8-bitcoin" selectedImage="selected-icons8-bitcoin" id="cPa-gy-q4n"/>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3PD-Lt-Vha">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -249,8 +254,10 @@
         <scene sceneID="j4x-zt-plC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CKN-p6-WWd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trade History" image="icons8-order_history" selectedImage="icons8-order_history" id="BEs-Zh-Jyg"/>
+                    <tabBarItem key="tabBarItem" title="Trade History" image="icons8-order_history" selectedImage="selected-icons8-order_history" id="BEs-Zh-Jyg"/>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P2G-WM-UfQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -350,11 +357,68 @@
             </objects>
             <point key="canvasLocation" x="2088.8000000000002" y="1114.992503748126"/>
         </scene>
+        <!--Twitter Feed-->
+        <scene sceneID="SDv-jH-c1f">
+            <objects>
+                <tableViewController storyboardIdentifier="CXTwitterTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UfH-6d-qHP" customClass="CXTwitterTVC" customModule="CEX___My_Smart_Price_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="m5e-6i-OWg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2KZ-0t-9tJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2KZ-0t-9tJ" id="oZJ-Qi-xAB">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UfH-6d-qHP" id="4gA-nE-qTF"/>
+                            <outlet property="delegate" destination="UfH-6d-qHP" id="feT-Tq-Z0X"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Twitter Feed" id="yBJ-WT-fGt"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTQ-oy-K3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2170" y="1830"/>
+        </scene>
+        <!--Twitter Feed-->
+        <scene sceneID="COi-bG-WWM">
+            <objects>
+                <navigationController id="n1G-hu-KUW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Twitter Feed" image="social-feed" selectedImage="selected-social-feed" id="rGM-ST-E1q"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sd6-Y4-c1s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17820397020000001" green="0.70222938059999995" blue="0.49688732619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UfH-6d-qHP" kind="relationship" relationship="rootViewController" id="36j-7G-KCT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0z-Rz-pii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1219" y="1830"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icons8-about" width="25" height="25"/>
         <image name="icons8-bitcoin" width="25" height="25"/>
         <image name="icons8-candle_sticks" width="25" height="25"/>
         <image name="icons8-order_history" width="25" height="25"/>
+        <image name="selected-icons8-bitcoin" width="25" height="25"/>
+        <image name="selected-icons8-candle_sticks" width="25" height="25"/>
+        <image name="selected-icons8-order_history" width="25" height="25"/>
+        <image name="selected-social-feed" width="25" height="25"/>
+        <image name="social-feed" width="25" height="25"/>
     </resources>
 </document>

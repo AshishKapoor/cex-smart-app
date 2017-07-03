@@ -21,11 +21,15 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - RFAboutView-Swift (2.0.1)
+  - TwitterCore (3.0.0)
+  - TwitterKit (3.0.3):
+    - TwitterCore (>= 3.0.0)
 
 DEPENDENCIES:
   - Charts
   - Firebase/AdMob
   - RFAboutView-Swift (~> 2.0.1)
+  - TwitterKit
 
 SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
@@ -36,7 +40,9 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 168312cdc167fa22746d4ea8e839fc4825dd2966
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   RFAboutView-Swift: dc31db0e7bc890ab6c9e1ca8f50e8f97bdba9622
+  TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
+  TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
 
-PODFILE CHECKSUM: 4cf12a6969444801ea5245eb0dad46b8b36e001d
+PODFILE CHECKSUM: 39547b88a3a1ddac02ea4468f80d1659a142a9de
 
 COCOAPODS: 1.2.1

@@ -9,5 +9,5 @@ target 'CEX - My Smart Price Tracker' do
   pod 'Charts'
   pod 'Firebase/AdMob'
   pod 'RFAboutView-Swift', '~> 2.0.1'
-
+  pod 'TwitterKit'
 end

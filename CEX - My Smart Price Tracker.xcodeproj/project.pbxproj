@@ -37,6 +37,7 @@
 		8977AF801EFCD3A600F7874E /* CXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */; };
 		8977AF851EFD021800F7874E /* CXChartTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF841EFD021800F7874E /* CXChartTVC.swift */; };
 		8977AF871EFD028000F7874E /* CXChartTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8977AF861EFD028000F7874E /* CXChartTVCell.swift */; };
+		89FADBB51F0A489A0001937C /* CXTwitterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FADBB41F0A489A0001937C /* CXTwitterTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		8977AF7F1EFCD3A600F7874E /* CXExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXExtensions.swift; sourceTree = "<group>"; };
 		8977AF841EFD021800F7874E /* CXChartTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChartTVC.swift; sourceTree = "<group>"; };
 		8977AF861EFD028000F7874E /* CXChartTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXChartTVCell.swift; sourceTree = "<group>"; };
+		89FADBB41F0A489A0001937C /* CXTwitterTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CXTwitterTVC.swift; sourceTree = "<group>"; };
 		B4FF6CD8BBFA7C224839BDA6 /* Pods_CEX___My_Smart_Price_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_CEX___My_Smart_Price_Tracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFAF53B6D5D4162A1F040A2 /* Pods-CEX - My Smart Price Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CEX - My Smart Price Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CEX - My Smart Price Tracker/Pods-CEX - My Smart Price Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,6 +218,7 @@
 				8977AF831EFCE4FC00F7874E /* Charts */,
 				8977AF811EFCE4F600F7874E /* Currency */,
 				8977AF821EFCE4F900F7874E /* Trade History */,
+				89FADBB61F0A4A000001937C /* Twitter Feed */,
 				8977AF701EFCD0FC00F7874E /* Assets.xcassets */,
 				8977AF751EFCD0FC00F7874E /* Info.plist */,
 			);
@@ -248,6 +251,14 @@
 				89639B981EFD074600DB0A15 /* CXChart.swift */,
 			);
 			name = Charts;
+			sourceTree = "<group>";
+		};
+		89FADBB61F0A4A000001937C /* Twitter Feed */ = {
+			isa = PBXGroup;
+			children = (
+				89FADBB41F0A489A0001937C /* CXTwitterTVC.swift */,
+			);
+			name = "Twitter Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +444,7 @@
 				895D6C7A1F02599100B1E281 /* CXLastPrices.swift in Sources */,
 				8977AF851EFD021800F7874E /* CXChartTVC.swift in Sources */,
 				8977AF871EFD028000F7874E /* CXChartTVCell.swift in Sources */,
+				89FADBB51F0A489A0001937C /* CXTwitterTVC.swift in Sources */,
 				89639B991EFD074600DB0A15 /* CXChart.swift in Sources */,
 				8977AF681EFCD0FC00F7874E /* AppDelegate.swift in Sources */,
 				8977AF7C1EFCD1FA00F7874E /* CXTradeCurrencyVC.swift in Sources */,
