@@ -42,8 +42,7 @@ class CXTradeCurrencyVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func setupAdMob() {
-//        let request = GADRequest()
-//        request.testDevices = [kGADSimulatorID]
+//        requestGAD.testDevices = [kGADSimulatorID]
         
         bannerView.adUnitID = "ca-app-pub-1816315233369355/9965504421"
         bannerView.rootViewController = self
